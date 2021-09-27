@@ -4,10 +4,11 @@ import tp3_dados.*;
 public class RegistrosDados {
 	private Dados d = new Dados();
 	
+	
 	public RegistrosDados(){
 		d.PreCadastrar();
 	}
-	
+
 	public Dados getDados() {
 		return d;
 	}
@@ -62,13 +63,5 @@ public class RegistrosDados {
 	
 	public int qtdVendas() {
 		return this.d.getTotalVendas();
-	}
-	
-	public RelatorioVenda[] listarRelatorio() {
-		return this.d.getRelatorioControle();
-	}
-	
-	public int qtdRelatorios() {
-		return this.d.getTotalRelatorios();
 	}
 }

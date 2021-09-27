@@ -5,13 +5,12 @@ package tp3_dados;
 public class Venda {
 
 	private Double valor;
-	private int qtdProduto;
-	private int qtdBebida;	
+	private int qtdProduto;	
 	private String produtoPedido;
-	private String bebidaPedida;
 	private String formaDePagamento;
 	private String cliente;
 	private String vendedor;
+	private String dataVenda;
 	
 	public Venda() {
 	}
@@ -27,14 +26,6 @@ public class Venda {
 	public void setProdutoPedido(String produtoPedido) {
 		this.produtoPedido = produtoPedido;
 	}
-	
-	public String getBebidaPedida() {
-		return bebidaPedida;
-	}
-	public void setBebidaPedida(String bebidaPedida) {
-		this.bebidaPedida = bebidaPedida;
-	}
-	
 	public String getFormaDePagamento() {
 		return formaDePagamento;
 	}
@@ -46,12 +37,6 @@ public class Venda {
 	}
 	public void setQtdProduto(int qtdProduto) {
 		this.qtdProduto = qtdProduto;
-	}
-	public int getQtdBebida() {
-		return qtdBebida;
-	}
-	public void setQtdBebida(int qtdBebida) {
-		this.qtdBebida = qtdBebida;
 	}
 	public String getCliente() {
 		return cliente;
@@ -66,4 +51,11 @@ public class Venda {
 		this.vendedor = vendedor;
 	}	
 	
+	public String getDataVenda() {
+		return dataVenda;
+	}
+
+	public void setDataVenda(String dataVenda) {
+		this.dataVenda = dataVenda;
+	}
 }
