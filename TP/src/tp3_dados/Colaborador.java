@@ -14,6 +14,13 @@ public class Colaborador extends Pessoa{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public String getCPF() {
+		return CPF;
+	}
+	public void setCPF(String cpf) {
+		CPF = cpf;
+	}
 	public String getID() {
 		return ID;
 	}

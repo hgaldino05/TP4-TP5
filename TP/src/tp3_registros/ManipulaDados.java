@@ -45,7 +45,7 @@ public class ManipulaDados {
 	public String[] getListaBebida() {
 		String[] listaBebidas = new String[qtdBebidas];
 		for(int i = 0; i < qtdBebidas; i++) {
-			listaBebidas[i] = b[i].getSabor();
+			listaBebidas[i] = b[i].getSabor() + "  ESTOQUE: " + b[i].getEstoque();
 		}
 		
 		return listaBebidas;
@@ -53,7 +53,7 @@ public class ManipulaDados {
 	public String[] getListaPastel() {
 		String[] listaPasteis = new String[qtdPasteis];
 		for(int i = 0; i < qtdPasteis; i++) {
-			listaPasteis[i] = p[i].getSabor();
+			listaPasteis[i] = p[i].getSabor()+ "  ESTOQUE: " + p[i].getEstoque();
 		}
 		
 		return listaPasteis;
@@ -61,7 +61,7 @@ public class ManipulaDados {
 	public String[] getListaCliente() {
 		String[] listaClientes = new String[qtdClientes];
 		for(int i = 0; i < qtdClientes; i++) {
-			listaClientes[i] = cl[i].getNome();
+			listaClientes[i] = cl[i].getNome() + "   PONTOS: " + cl[i].getPontuacao();
 		}
 		
 		return listaClientes;
@@ -69,7 +69,7 @@ public class ManipulaDados {
 	public String[] getListaColaborador() {
 		String[] listaColaboradores = new String[qtdColaboradores];
 		for(int i = 0; i < qtdColaboradores; i++) {
-			listaColaboradores[i] = co[i].getNome();
+			listaColaboradores[i] = co[i].getNome() + "   ID: " + co[i].getID();
 		}
 		
 		return listaColaboradores;
@@ -86,7 +86,7 @@ public class ManipulaDados {
 	public String[] getListaVendas() {
 		String[] listaVendas = new String[qtdVendas];
 		for(int i = 0; i < qtdVendas; i++) {
-			listaVendas[i] = v[i].getDataVenda() + "   VALOR: R$" + v[i].getValor();
+			listaVendas[i] = v[i].getDataVenda() + " CLIENTE: " + v[i].getCliente()+ "  VALOR: R$" + v[i].getValor();
 			
 		}
 		

@@ -55,7 +55,7 @@ public class Dados{
 					co.setNome("Cleiton Rasta");
 					co.setID("0001.2019");
 					co.setDataEntrada("15/8/2019");
-									
+					co.setCPF("333.444.333-44");		
 				}
 				
 				if(i == 1) {
@@ -74,6 +74,7 @@ public class Dados{
 					co.setNome("Fulana Costa");
 					co.setID("0002.2019");
 					co.setDataEntrada("16/8/2021");
+					co.setCPF("111.444.222-44");
 					
 				}
 				
@@ -93,7 +94,7 @@ public class Dados{
 					co.setNome("Patrick Vieira");
 					co.setID("0003.2019");
 					co.setDataEntrada("16/8/2019");
-					
+					co.setCPF("222.444.555-44");
 				}
 				
 				if(i == 3) {
@@ -112,6 +113,7 @@ public class Dados{
 					co.setNome("Rogerinho do Querô");
 					co.setID("0004.2019");
 					co.setDataEntrada("25/11/2019");
+					co.setCPF("333.444.666-44");
 					
 				}
 				
@@ -131,6 +133,7 @@ public class Dados{
 					co.setNome("Fausto Silva");
 					co.setID("0005.2020");
 					co.setDataEntrada("5/4/2020");
+					co.setCPF("444.444.777-44");
 					
 				}
 				
@@ -150,6 +153,7 @@ public class Dados{
 					co.setNome("Hiromu Arakawa");
 					co.setID("0006.2020");
 					co.setDataEntrada("5/4/2020");
+					co.setCPF("666.444.121-44");
 					
 				}
 				
@@ -169,6 +173,7 @@ public class Dados{
 					co.setNome("Alice Nunes");
 					co.setID("0007.2020");
 					co.setDataEntrada("9/6/2020");
+					co.setCPF("000.444.333-44");
 					
 				}
 				
@@ -188,6 +193,7 @@ public class Dados{
 					co.setNome("Jeff Bezos");
 					co.setID("0008.2021");
 					co.setDataEntrada("12/1/2021");
+					co.setCPF("444.444.333-44");
 					
 				}
 				
@@ -207,6 +213,7 @@ public class Dados{
 					co.setNome("Ronaldinho Gaúcho");
 					co.setID("0009.2021");
 					co.setDataEntrada("2/5/2021");
+					co.setCPF("131.454.000-44");
 					
 				}
 				
@@ -226,6 +233,7 @@ public class Dados{
 					co.setNome("The Rock");
 					co.setID("0010.2021");
 					co.setDataEntrada("9/9/2021");
+					co.setCPF("111.840.657-94");
 					
 				}
 				
@@ -282,11 +290,6 @@ public class Dados{
 				ca.setProdutos("Batata Frita");
 				ca.setDescricaoProdutos("Pote tamanho grande com Batata Frita");
 				ca.setPrecoProdutos(7.99);
-				
-				ca.setProdutos("Refrigerante PET 600ml");
-				ca.setDescricaoProdutos("Refrigerante 600ml em garrafa PET");
-				ca.setPrecoProdutos(6.49);
-
 			}
 			if (i == 8) {
 				ca.setProdutos("Refrigerante PET 600ml");

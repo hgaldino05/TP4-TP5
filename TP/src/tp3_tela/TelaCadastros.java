@@ -8,7 +8,7 @@ import javax.swing.event.*;
 
 import tp3_registros.*;
 
-public class TelaProdutos implements ActionListener, ListSelectionListener{
+public class TelaCadastros implements ActionListener, ListSelectionListener{
 	private JFrame janela;
 	private JLabel titulo;
 	private JButton botao;
@@ -43,7 +43,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
 				
-				bebidaCadastrada.setBounds(20, 50, 150, 220);
+				bebidaCadastrada.setBounds(20, 50, 300, 220);
 				bebidaCadastrada.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				bebidaCadastrada.setVisibleRowCount(10);
 				
@@ -72,7 +72,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
 				
-				pastelCadastrado.setBounds(20, 50, 220, 220);
+				pastelCadastrado.setBounds(20, 50, 300, 220);
 				pastelCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				pastelCadastrado.setVisibleRowCount(10);
 				
@@ -102,7 +102,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
 				
-				clienteCadastrado.setBounds(20, 50, 220, 220);
+				clienteCadastrado.setBounds(20, 50, 300, 220);
 				clienteCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				clienteCadastrado.setVisibleRowCount(10);
 				
@@ -131,7 +131,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
 				
-				colaboradorCadastrado.setBounds(20, 50, 220, 220);
+				colaboradorCadastrado.setBounds(20, 50, 300, 220);
 				colaboradorCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				colaboradorCadastrado.setVisibleRowCount(10);
 				
@@ -159,7 +159,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
 				
-				cardapioCadastrado.setBounds(20, 50, 270, 220);
+				cardapioCadastrado.setBounds(20, 50, 300, 220);
 				cardapioCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				cardapioCadastrado.setVisibleRowCount(10);
 				
@@ -187,7 +187,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
 				
-				vendaCadastrada.setBounds(20, 50, 270, 220);
+				vendaCadastrada.setBounds(20, 50, 370, 220);
 				vendaCadastrada.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				vendaCadastrada.setVisibleRowCount(10);
 				
@@ -198,7 +198,7 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 				janela.add(titulo);
 				janela.add(vendaCadastrada);	
 				
-				janela.setSize(400, 350);
+				janela.setSize(500, 350);
 				janela.setVisible(true);
 				
 				botao.addActionListener(this);
@@ -210,14 +210,30 @@ public class TelaProdutos implements ActionListener, ListSelectionListener{
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
+		Object src = e.getSource();
+		
+		if(e.getValueIsAdjusting() && src == bebidaCadastrada) {
+			new TelaBebidaPastel().editarBebidaPastel(2, registro, this, bebidaCadastrada.getSelectedIndex());
+		}
+		
+		if(e.getValueIsAdjusting() && src == pastelCadastrado) {
+			new TelaBebidaPastel().editarBebidaPastel(4, registro, this, pastelCadastrado.getSelectedIndex());
+		}
+		
+		if(e.getValueIsAdjusting() && src == clienteCadastrado) {
+			new TelaClienteColaborador().editarClienteColaborador(2, registro, this, clienteCadastrado.getSelectedIndex());
+		}
+		
+		if(e.getValueIsAdjusting() && src == colaboradorCadastrado) {
+			new TelaClienteColaborador().editarClienteColaborador(4, registro, this, colaboradorCadastrado.getSelectedIndex());
+		}
 		
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

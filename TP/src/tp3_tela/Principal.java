@@ -11,8 +11,8 @@ import tp3_registros.RegistrosDados;
 
 public class Principal implements ActionListener{
 
-	private static JFrame janela = new JFrame("TESTE");
-	private static JLabel titulo = new JLabel("TESTE");
+	private static JFrame janela = new JFrame("SISTEMA");
+	private static JLabel titulo = new JLabel("PASTELARIA");
 	private static JButton botao1 = new JButton("BEBIDAS");
 	private static JButton botao2 = new JButton("PASTÉIS");
 	private static JButton botao3 = new JButton("CLIENTES");
@@ -23,8 +23,8 @@ public class Principal implements ActionListener{
 	public static RegistrosDados registro =  new RegistrosDados();
 	
 	public Principal(){
-		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-		titulo.setBounds(210, 10, 150, 30);
+		titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+		titulo.setBounds(165, 40, 150, 30);
 		
 		botao1.setFont(new Font("Calibri", Font.ITALIC, 16));
 		botao2.setFont(new Font("Calibri", Font.ITALIC, 16));
@@ -70,27 +70,27 @@ public class Principal implements ActionListener{
 		Object src = e.getSource();
 		
 		if(src == botao1) {
-			new TelaProdutos().tela(registro, 1);
+			new TelaCadastros().tela(registro, 1);
 		}
 		
 		if(src == botao2) {
-			new TelaProdutos().tela(registro, 2);
+			new TelaCadastros().tela(registro, 2);
 		}
 		
 		if(src == botao3) {
-			new TelaProdutos().tela(registro, 3);
+			new TelaCadastros().tela(registro, 3);
 		}
 		
 		if(src == botao4) {
-			new TelaProdutos().tela(registro, 4);
+			new TelaCadastros().tela(registro, 4);
 		}
 		
 		if(src == botao5) {
-			new TelaProdutos().tela(registro, 5);
+			new TelaCadastros().tela(registro, 5);
 		}
 		
 		if(src == botao6) {
-			new TelaProdutos().tela(registro, 6);
+			new TelaCadastros().tela(registro, 6);
 		}
 		
 	}
