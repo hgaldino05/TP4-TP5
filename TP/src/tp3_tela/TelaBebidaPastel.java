@@ -29,7 +29,7 @@ public class TelaBebidaPastel implements ActionListener {
 	private int indice;
 	private int opcao;
 	private String nomeTela;
-	
+	private String[] dado = new String[20];
 	public void editarBebidaPastel(int op, RegistrosDados r, TelaCadastros t, int ind) {
 		
 		opcao = op;
@@ -100,9 +100,46 @@ public class TelaBebidaPastel implements ActionListener {
 	}
 		public void actionPerformed(ActionEvent e) {
 			Object src = e.getSource();
+			boolean editar;
 			if(src == salvar) {
 				
+				if(opcao == 1) { //cadastrar bebida{
+					dado[0] = Integer.toString(registro.qtdBebidas());
+				}else if(opcao == 3) { //cadastrar pastel 
+					dado[0] = Integer.toString(registro.qtdPasteis());
+				}else { //editar bebida/pastel
+					dado[0] = Integer.toString(indice);
+					
+					dado[1] = textSabor.getText();
+					dado[2] = textEstoque.getText();
+					
+					if(opcao == 2) {
+						int novoEstoque = Integer.parseInt(dado[2]);
+						registro.listarBebida()[indice].setSabor(dado[1]);
+						registro.listarBebida()[indice].setEstoque(novoEstoque);
+						
+						mensagemBebidaSucesso();
+					}else if(opcao == 4) {
+						int novoEstoque = Integer.parseInt(dado[2]);
+						registro.listarPastel()[indice].setSabor(dado[1]);
+						registro.listarPastel()[indice].setEstoque(novoEstoque);
+						
+						mensagemPastelSucesso();
+					}
+				}
 				
 			}
-	}
+		}
+		
+		public void mensagemBebidaSucesso() {
+			JOptionPane.showMessageDialog(null, "BEBIDA EDITADA COM SUCESSO", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+		}
+		
+		public void mensagemPastelSucesso() {
+			JOptionPane.showMessageDialog(null, "PASTEL EDITADO COM SUCESSO", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+		}
 }

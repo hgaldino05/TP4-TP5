@@ -2,6 +2,8 @@ package tp3_dados;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Dados{
 	private List<Bebida> bebida;
 	private List<Pastel> pastel;
@@ -417,7 +419,12 @@ public class Dados{
 	public void setBebidaControle(Bebida[] bebidaControle) {
 		this.bebidaControle = bebidaControle;
 	}
-
+	
+	public void inserirEditarBebida(Bebida b, int pos) {
+		this.bebidaControle[pos] = b;
+		if(pos == totalBebidas) totalBebidas++;
+	}
+	
 	public int getTotalBebidas() {
 		return totalBebidas;
 	}
@@ -434,6 +441,10 @@ public class Dados{
 		this.pastelControle = pastelControle;
 	}
 
+	public void inserirEditarPastel(Pastel p, int pos) {
+		this.pastelControle[pos] = p;
+		if(pos == totalPasteis) totalPasteis++;
+	}
 	public int getTotalPasteis() {
 		return totalPasteis;
 	}
@@ -450,6 +461,11 @@ public class Dados{
 		this.clienteControle = clienteControle;
 	}
 
+	public void inserirEditarCliente(Cliente c, int pos) {
+		this.clienteControle[pos] = c;
+		if(pos == totalClientes) totalClientes++;
+	}
+	
 	public int getTotalClientes() {
 		return totalClientes;
 	}
@@ -466,6 +482,11 @@ public class Dados{
 		this.colaboradorControle = colaboradorControle;
 	}
 
+	public void inserirEditarColaborador(Colaborador co, int pos) {
+		this.colaboradorControle[pos] = co;
+		if(pos == totalColaboradores) totalColaboradores++;
+	}
+	
 	public int getTotalColaboradores() {
 		return totalColaboradores;
 	}
@@ -482,6 +503,10 @@ public class Dados{
 		this.cardapioControle = cardapioControle;
 	}
 
+	public void inserirEditarCardapio(Cardapio c, int pos) {
+		this.cardapioControle[pos] = c;
+		if(pos == totalCardapio) totalCardapio++;
+	}
 	public int getTotalCardapio() {
 		return totalCardapio;
 	}
@@ -497,7 +522,7 @@ public class Dados{
 	public void setVendaControle(Venda[] vendaControle) {
 		this.vendaControle = vendaControle;
 	}
-
+	
 	public int getTotalVendas() {
 		return totalVendas;
 	}

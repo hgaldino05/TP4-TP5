@@ -227,7 +227,9 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 		if(e.getValueIsAdjusting() && src == colaboradorCadastrado) {
 			new TelaClienteColaborador().editarClienteColaborador(4, registro, this, colaboradorCadastrado.getSelectedIndex());
 		}
-		
+		if(e.getValueIsAdjusting() && src == cardapioCadastrado) {
+			new TelaCardapio().editarCardapio(2, registro, this, cardapioCadastrado.getSelectedIndex());
+		}
 	}
 
 
