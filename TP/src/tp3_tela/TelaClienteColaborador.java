@@ -189,6 +189,63 @@ public class TelaClienteColaborador implements ActionListener{
 				mensagemColaboradorSucesso();
 			}		
 		}
+		
+		if(src == deletar) {
+			
+			if(opcao == 2) { //excluir cliente
+				
+				if(indice == (registro.qtdClientes() - 1)) { //Se for a última bebida da lista
+					
+					registro.listarCliente()[indice] = null;
+					registro.getDados().setTotalClientes(registro.getDados().getTotalClientes() - 1);
+					
+					mensagemClienteDeletado();
+				}else {
+					String nomeDeletar = registro.listarCliente()[indice].getNome();
+					
+					int contador = 0;
+					while(registro.listarCliente()[contador].getNome().compareTo(nomeDeletar) != 0) {
+						contador++;
+					}
+						
+						for(int i = contador; i < registro.qtdClientes(); i++) {
+							registro.listarCliente()[i] = null;
+							registro.listarCliente()[i] = registro.listarCliente()[i + 1];
+						}
+						registro.listarCliente()[registro.qtdClientes()] = null;
+						registro.getDados().setTotalClientes(registro.getDados().getTotalClientes() - 1);
+					mensagemClienteDeletado();
+				
+				}
+			}else if(opcao == 4) { //excluir colaborador
+				
+				if(indice == (registro.qtdColaboradores() - 1)) { //Se for a última bebida da lista
+					
+					registro.listarColaborador()[indice] = null;
+					registro.getDados().setTotalColaboradores(registro.getDados().getTotalColaboradores() - 1);
+					
+					mensagemColaboradorDeletado();
+				}else {
+					String nomeDeletar = registro.listarColaborador()[indice].getNome();
+					
+					int contador = 0;
+					while(registro.listarColaborador()[contador].getNome().compareTo(nomeDeletar) != 0) {
+						contador++;
+					}
+						
+						for(int i = contador; i < registro.qtdColaboradores(); i++) {
+							registro.listarColaborador()[i] = null;
+							registro.listarColaborador()[i] = registro.listarColaborador()[i + 1];
+						}
+						registro.listarColaborador()[registro.qtdColaboradores()] = null;
+						registro.getDados().setTotalColaboradores(registro.getDados().getTotalColaboradores() - 1);
+					mensagemColaboradorDeletado();
+				
+				}
+			
+			}
+		
+		}
 	}
 	public void mensagemClienteSucesso() {
 		JOptionPane.showMessageDialog(null, "CLIENTE EDITADO COM SUCESSO", null, 
@@ -197,6 +254,17 @@ public class TelaClienteColaborador implements ActionListener{
 	}
 	public void mensagemColaboradorSucesso() {
 		JOptionPane.showMessageDialog(null, "COLABORADOR EDITADO COM SUCESSO", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemClienteDeletado() {
+		JOptionPane.showMessageDialog(null, "CLIENTE DELETADO COM SUCESSO", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	public void mensagemColaboradorDeletado() {
+		JOptionPane.showMessageDialog(null, "COLABORADOR DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
