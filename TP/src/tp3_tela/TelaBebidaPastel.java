@@ -9,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import tp3_dados.Bebida;
+import tp3_dados.Dados;
 import tp3_registros.*;
 
 
@@ -25,6 +28,7 @@ public class TelaBebidaPastel implements ActionListener {
 	private JButton salvar =  new JButton("SALVAR");
 	private JButton deletar =  new JButton("DELETAR");
 	
+	private static Dados dados;
 	private static RegistrosDados registro;
 	private int indice;
 	private int opcao;
@@ -104,8 +108,32 @@ public class TelaBebidaPastel implements ActionListener {
 				
 				if(opcao == 1) { //cadastrar bebida{
 					dado[0] = Integer.toString(registro.qtdBebidas());
+					
+					dado[1] = textSabor.getText();
+					dado[2] = textEstoque.getText();
+					
+					int estoque = Integer.parseInt(dado[2]);
+					
+					registro.getDados().setTotalBebidas(registro.getDados().getTotalBebidas() + 1);
+					
+					
+					registro.listarBebida()[indice].setSabor(dado[1]);
+					registro.listarBebida()[indice].setEstoque(estoque);
+					
 				}else if(opcao == 3) { //cadastrar pastel 
 					dado[0] = Integer.toString(registro.qtdPasteis());
+					
+					dado[1] = textSabor.getText();
+					dado[2] = textEstoque.getText();
+					
+					int estoque = Integer.parseInt(dado[2]);
+					
+					registro.getDados().setTotalPasteis(registro.getDados().getTotalPasteis() + 1);
+					
+					
+					
+					registro.listarPastel()[indice].setSabor(dado[1]);
+					registro.listarPastel()[indice].setEstoque(estoque);
 				}else { //editar bebida/pastel
 					dado[0] = Integer.toString(indice);
 					

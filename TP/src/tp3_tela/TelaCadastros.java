@@ -9,9 +9,12 @@ import javax.swing.event.*;
 import tp3_registros.*;
 
 public class TelaCadastros implements ActionListener, ListSelectionListener{
+	
+	private int menu;
 	private JFrame janela;
 	private JLabel titulo;
-	private JButton botao;
+	private JButton botaoCadastrar;
+	private JButton botaoAtualizar;
 	/*private JButton pastel;
 	private JButton cliente;
 	private JButton colaborador;*/
@@ -32,13 +35,15 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 		
 		switch(listar) {
 			case 1: //Bebidas
+				menu = 1;
 				listagem = new ManipulaDados(registro).getListaBebida();
 				
 				
 				bebidaCadastrada = new JList<String>(listagem);
 				janela = new JFrame("Bebidas");
 				titulo = new JLabel("Sabores de bebidas");
-				botao = new JButton("Bebida Teste");
+				botaoCadastrar = new JButton("Cadastrar");
+				botaoAtualizar = new JButton("Atualizar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -47,27 +52,33 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				bebidaCadastrada.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				bebidaCadastrada.setVisibleRowCount(10);
 				
-				botao.setBounds(70, 177, 100, 30);
+				botaoCadastrar.setBounds(40, 277, 100, 30);
+				botaoAtualizar.setBounds(180, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
 				janela.add(titulo);
 				janela.add(bebidaCadastrada);	
+				janela.add(botaoCadastrar);	
+				janela.add(botaoAtualizar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
-				botao.addActionListener(this);
+				botaoCadastrar.addActionListener(this);
+				botaoAtualizar.addActionListener(this);
 				bebidaCadastrada.addListSelectionListener(this);
 				break;
 				
 			case 2: //Pastéis
+				menu = 2;
 				listagem = new ManipulaDados(registro).getListaPastel();
 				
 				pastelCadastrado = new JList<String>(listagem);
 				janela = new JFrame("Pastéis");
 				titulo = new JLabel("Sabores de Pastéis");
-				botao = new JButton("Pastel Teste");
+				botaoCadastrar = new JButton("Cadastrar");
+				botaoAtualizar = new JButton("Atualizar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -77,27 +88,33 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				pastelCadastrado.setVisibleRowCount(10);
 				
 
-				botao.setBounds(70, 177, 100, 30);
+				botaoCadastrar.setBounds(40, 277, 100, 30);
+				botaoAtualizar.setBounds(180, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
 				janela.add(titulo);
 				janela.add(pastelCadastrado);	
+				janela.add(botaoCadastrar);	
+				janela.add(botaoAtualizar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
-				botao.addActionListener(this);
+				botaoCadastrar.addActionListener(this);
 				pastelCadastrado.addListSelectionListener(this);
+				
 				break;
 				
 			case 3: //Clientes
+				menu = 3;
 				listagem =  new ManipulaDados(registro).getListaCliente();
 				
 				clienteCadastrado = new JList<String>(listagem);
 				janela = new JFrame("Clientes");
 				titulo = new JLabel("Lista de Clientes");
-				botao = new JButton("Cliente Teste");
+				botaoCadastrar = new JButton("Cadastrar");
+				botaoAtualizar = new JButton("Atualizar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -106,27 +123,32 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				clienteCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				clienteCadastrado.setVisibleRowCount(10);
 				
-				botao.setBounds(70, 177, 100, 30);
+				botaoCadastrar.setBounds(40, 277, 100, 30);
+				botaoAtualizar.setBounds(180, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
 				janela.add(titulo);
 				janela.add(clienteCadastrado);	
+				janela.add(botaoCadastrar);	
+				janela.add(botaoAtualizar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
-				botao.addActionListener(this);
+				botaoCadastrar.addActionListener(this);
 				clienteCadastrado.addListSelectionListener(this);
 				break;
 			
 			case 4: //Colaboradores
+				menu = 4;
 				listagem =  new ManipulaDados(registro).getListaColaborador();
 				
 				colaboradorCadastrado = new JList<String>(listagem);
 				janela = new JFrame("Colaboradores");
 				titulo = new JLabel("Lista de Colaboradores");
-				botao = new JButton("Colaborador Teste");
+				botaoCadastrar = new JButton("Cadastrar");
+				botaoAtualizar = new JButton("Atualizar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -135,26 +157,31 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				colaboradorCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				colaboradorCadastrado.setVisibleRowCount(10);
 				
-				botao.setBounds(70, 177, 100, 30);
+				botaoCadastrar.setBounds(40, 277, 100, 30);
+				botaoAtualizar.setBounds(180, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
 				janela.add(titulo);
 				janela.add(colaboradorCadastrado);	
+				janela.add(botaoCadastrar);	
+				janela.add(botaoAtualizar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
-				botao.addActionListener(this);
+				botaoCadastrar.addActionListener(this);
 				colaboradorCadastrado.addListSelectionListener(this);
 				break;
 			case 5: //Cardápio
+				menu = 5;
 				listagem =  new ManipulaDados(registro).getItensCardapio();
 				
 				cardapioCadastrado = new JList<String>(listagem);
 				janela = new JFrame("Cardápio");
 				titulo = new JLabel("Itens do Cardápio");
-				botao = new JButton("Cardápio Teste");
+				botaoCadastrar = new JButton("Cadastrar");
+				botaoAtualizar = new JButton("Atualizar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -163,17 +190,20 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				cardapioCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				cardapioCadastrado.setVisibleRowCount(10);
 				
-				botao.setBounds(70, 177, 100, 30);
+				botaoCadastrar.setBounds(40, 277, 100, 30);
+				botaoAtualizar.setBounds(180, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
 				janela.add(titulo);
 				janela.add(cardapioCadastrado);	
+				janela.add(botaoCadastrar);	
+				janela.add(botaoAtualizar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
-				botao.addActionListener(this);
+				botaoCadastrar.addActionListener(this);
 				cardapioCadastrado.addListSelectionListener(this);
 				break;
 			case 6: //Venda
@@ -182,7 +212,6 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				vendaCadastrada = new JList<String>(listagem);
 				janela = new JFrame("Vendas");
 				titulo = new JLabel("Vendas Registradas");
-				botao = new JButton("Vendas Teste");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -190,9 +219,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				vendaCadastrada.setBounds(20, 50, 370, 220);
 				vendaCadastrada.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				vendaCadastrada.setVisibleRowCount(10);
-				
-				botao.setBounds(70, 177, 100, 30);
-				
+		
 				janela.setLayout(null);
 				
 				janela.add(titulo);
@@ -201,7 +228,6 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.setSize(500, 350);
 				janela.setVisible(true);
 				
-				botao.addActionListener(this);
 				vendaCadastrada.addListSelectionListener(this);
 				break;
 		}
@@ -235,7 +261,31 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
 		
-		
+		if(src == botaoCadastrar) {
+			
+			if(menu == 1) {
+				
+				new TelaBebidaPastel().editarBebidaPastel(1, registro, this, 0);
+				
+			}else if(menu == 2) {
+				
+				new TelaBebidaPastel().editarBebidaPastel(3, registro, this, 0);
+				
+			}else if(menu == 3) {
+				
+				new TelaClienteColaborador().editarClienteColaborador(1, registro, this, 0);
+				
+			}else if(menu == 4) {
+				
+				new TelaClienteColaborador().editarClienteColaborador(3, registro, this, 0);
+				
+			}else if(menu == 5) {
+				
+				new TelaCardapio().editarCardapio(1, registro, this, 1);
+				
+			}
+		}
 	}
 }
