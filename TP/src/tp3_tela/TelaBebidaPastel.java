@@ -128,6 +128,63 @@ public class TelaBebidaPastel implements ActionListener {
 				}
 				
 			}
+			
+			if(src == deletar) {
+				
+				if(opcao == 2) { //excluir bebida
+					
+					if(indice == (registro.qtdBebidas() - 1)) { //Se for a última bebida da lista
+						
+						registro.listarBebida()[indice] = null;
+						registro.getDados().setTotalBebidas(registro.getDados().getTotalBebidas() - 1);
+						
+						mensagemBebidaDeletada();
+					}else {
+						String saborDeletar = registro.listarBebida()[indice].getSabor();
+						
+						int contador = 0;
+						while(registro.listarBebida()[contador].getSabor().compareTo(saborDeletar) != 0) {
+							contador++;
+						}
+							
+							for(int i = contador; i < registro.qtdBebidas(); i++) {
+								registro.listarBebida()[i] = null;
+								registro.listarBebida()[i] = registro.listarBebida()[i + 1];
+							}
+							registro.listarBebida()[registro.qtdBebidas()] = null;
+							registro.getDados().setTotalBebidas(registro.getDados().getTotalBebidas() - 1);
+						mensagemBebidaDeletada();
+					
+					}
+				}else if(opcao == 4) { //excluir pastel
+					
+					if(indice == (registro.qtdPasteis() - 1)) { //Se for a última bebida da lista
+						
+						registro.listarPastel()[indice] = null;
+						registro.getDados().setTotalPasteis(registro.getDados().getTotalPasteis() - 1);
+						
+						mensagemPastelDeletado();
+					}else {
+						String saborDeletar = registro.listarPastel()[indice].getSabor();
+						
+						int contador = 0;
+						while(registro.listarPastel()[contador].getSabor().compareTo(saborDeletar) != 0) {
+							contador++;
+						}
+							
+							for(int i = contador; i < registro.qtdPasteis(); i++) {
+								registro.listarPastel()[i] = null;
+								registro.listarPastel()[i] = registro.listarPastel()[i + 1];
+							}
+							registro.listarPastel()[registro.qtdPasteis()] = null;
+							registro.getDados().setTotalPasteis(registro.getDados().getTotalPasteis() - 1);
+						mensagemPastelDeletado();
+					
+					}
+				
+				}
+			
+			}
 		}
 		
 		public void mensagemBebidaSucesso() {
@@ -138,6 +195,17 @@ public class TelaBebidaPastel implements ActionListener {
 		
 		public void mensagemPastelSucesso() {
 			JOptionPane.showMessageDialog(null, "PASTEL EDITADO COM SUCESSO", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+		}
+		
+		public void mensagemBebidaDeletada() {
+			JOptionPane.showMessageDialog(null, "BEBIDA DELETADA COM SUCESSO", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+		}
+		public void mensagemPastelDeletado() {
+			JOptionPane.showMessageDialog(null, "PASTEL DELETADO COM SUCESSO", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}

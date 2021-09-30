@@ -24,7 +24,7 @@ public class RegistrosDados {
 	public int qtdBebidas() {
 		return this.d.getTotalBebidas();
 	}
-	
+
 	public Pastel[] listarPastel() {
 		return this.d.getPastelControle();
 	}
