@@ -108,6 +108,50 @@ public class TelaCardapio implements ActionListener{
 				registro.listarCardapio()[indice].setPrecoProdutos(novoPreco);
 			}
 			
+				mensagemCardapioSucesso();
 		}
+		
+		if(src == deletar) {
+			
+			if(opcao == 2) { //excluir cliente
+				
+				if(indice == (registro.itensCardapio() - 1)) { //Se for a última bebida da lista
+					
+					registro.listarCardapio()[indice] = null;
+					registro.getDados().setTotalCardapio(registro.getDados().getTotalCardapio() - 1);
+					
+	
+				}else {
+					String produtoDeletar = registro.listarCardapio()[indice].getProdutos();
+					
+					int contador = 0;
+					while(registro.listarCardapio()[contador].getProdutos().compareTo(produtoDeletar) != 0) {
+						contador++;
+					}
+						
+						for(int i = contador; i < registro.itensCardapio(); i++) {
+							registro.listarCardapio()[i] = null;
+							registro.listarCardapio()[i] = registro.listarCardapio()[i + 1];
+						}
+						registro.listarCardapio()[registro.itensCardapio()] = null;
+						registro.getDados().setTotalCardapio(registro.getDados().getTotalCardapio() - 1);
+				
+				}
+				
+				mensagemCardapioDeletado();
+			}
+		}
+	}
+	
+	public void mensagemCardapioSucesso() {
+		JOptionPane.showMessageDialog(null, "ITEM EDITADO COM SUCESSO", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemCardapioDeletado() {
+		JOptionPane.showMessageDialog(null, "ITEM DELETADO COM SUCESSO", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
 	}
 }
