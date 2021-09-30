@@ -2,7 +2,7 @@ package tp3_tela;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -100,7 +100,6 @@ public class TelaBebidaPastel implements ActionListener {
 	}
 		public void actionPerformed(ActionEvent e) {
 			Object src = e.getSource();
-			boolean editar;
 			if(src == salvar) {
 				
 				if(opcao == 1) { //cadastrar bebida{

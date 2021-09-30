@@ -2,7 +2,7 @@ package tp3_tela;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -38,7 +38,9 @@ public class TelaClienteColaborador implements ActionListener{
 	private static RegistrosDados registro;
 	private int indice;
 	private int opcao;
-	private String nomeTela;
+	private String nomeTela;	
+	private String[] dado = new String[20];
+
 	
 	public void editarClienteColaborador(int op, RegistrosDados r, TelaCadastros t, int ind) {
 		
@@ -151,7 +153,51 @@ public class TelaClienteColaborador implements ActionListener{
 		Object src = e.getSource();
 		if(src == salvar) {
 			
-			
+			if(opcao == 1) { //cadastrar cliente
+				dado[0] = Integer.toString(registro.qtdClientes());
+			}else if(opcao == 3) {
+				dado[0] = Integer.toString(registro.qtdColaboradores());
+			}else if(opcao == 2){ //editar cliente
+				dado[0] = Integer.toString(indice);
+				
+				dado[1] = textNome.getText();
+				dado[2] = textCPF.getText();
+				dado[3] = textTelefone.getText();
+				dado[4] = textPontuacao.getText();
+				
+				int novaPontuacao = Integer.parseInt(dado[4]);
+				
+				registro.listarCliente()[indice].setNome(dado[1]);
+				registro.listarCliente()[indice].setCPF(dado[2]);
+				registro.listarCliente()[indice].setTelefone(dado[3]);
+				registro.listarCliente()[indice].setPontuacao(novaPontuacao);
+				
+				mensagemClienteSucesso();
+			}else if(opcao == 4){ //editar colaborador
+				dado[0] = Integer.toString(indice);
+				
+				dado[1] = textNome.getText();
+				dado[2] = textCPF.getText();
+				dado[3] = textID.getText();
+				dado[4] = textData.getText();
+				
+				registro.listarColaborador()[indice].setNome(dado[1]);
+				registro.listarColaborador()[indice].setCPF(dado[2]);
+				registro.listarColaborador()[indice].setID(dado[3]);
+				registro.listarColaborador()[indice].setDataEntrada(dado[4]);
+				
+				mensagemColaboradorSucesso();
+			}		
 		}
+	}
+	public void mensagemClienteSucesso() {
+		JOptionPane.showMessageDialog(null, "CLIENTE EDITADO COM SUCESSO", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	public void mensagemColaboradorSucesso() {
+		JOptionPane.showMessageDialog(null, "COLABORADOR EDITADO COM SUCESSO", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
 	}
 }

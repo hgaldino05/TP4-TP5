@@ -1,10 +1,10 @@
 package tp3_tela;
 
-import java.awt.*;
+
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
+
 
 import tp3_registros.*;
 
@@ -25,6 +25,7 @@ public class TelaCardapio implements ActionListener{
 	private int indice;
 	private int opcao;
 	private String nomeTela;
+	private String[] dado = new String[20];
 	
 	public void editarCardapio(int op, RegistrosDados r, TelaCadastros t, int ind) {
 		
@@ -91,6 +92,21 @@ public class TelaCardapio implements ActionListener{
 		Object src = e.getSource();
 		if(src == salvar) {
 			
+			if(opcao == 1) { //cadastrar itens no cardápio
+				dado[0] = Integer.toString(registro.itensCardapio());
+			}else {
+				dado[0] = Integer.toString(indice);
+				
+				dado[1] = textProduto.getText();
+				dado[2] = textDescricao.getText();
+				dado[3] = textPreco.getText();
+				
+				dado[3].replaceAll(",", ".");
+				double novoPreco = Double.parseDouble(dado[3]);
+				registro.listarCardapio()[indice].setProdutos(dado[1]);
+				registro.listarCardapio()[indice].setDescricaoProdutos(dado[2]);
+				registro.listarCardapio()[indice].setPrecoProdutos(novoPreco);
+			}
 			
 		}
 	}
