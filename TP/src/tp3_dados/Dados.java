@@ -222,8 +222,8 @@ public class Dados{
 					b.setSabor("Caldo de Cana");
 					b.setEstoque(70);
 					
-					p.setSabor("Coxinha");
-					p.setEstoque(200);
+					p.setSabor("Palmito");
+					p.setEstoque(20);
 					
 					cl.setCPF("000.000.110-11");
 					cl.setNome("Dwayne Johnson");

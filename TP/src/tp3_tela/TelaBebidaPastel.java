@@ -26,7 +26,7 @@ public class TelaBebidaPastel implements ActionListener {
 	private JLabel estoque = new JLabel("Estoque: ");
 	private JTextField textEstoque;
 	
-	private JButton salvar =  new JButton("SALVAR");
+	private JButton salvar;
 	private JButton deletar =  new JButton("DELETAR");
 	
 	//private static Dados dados;
@@ -54,17 +54,19 @@ public class TelaBebidaPastel implements ActionListener {
 			
 			textSabor = new JTextField(registro.listarBebida()[indice].getSabor(), 200);
 			textEstoque = new JTextField(estoqueB, 200);
+			salvar = new JButton("SALVAR");
 		}else if(op == 4) {
 			String estoqueP;
 			estoqueP = Integer.toString(registro.listarPastel()[indice].getEstoque());
 			
 			textSabor = new JTextField(registro.listarPastel()[indice].getSabor(), 200);
 			textEstoque = new JTextField(estoqueP, 200);
+			salvar = new JButton("SALVAR");
 		}else {
 			textSabor = new JTextField("1",200);
 			textEstoque = new JTextField("1",200);
 			
-			salvar.setBounds(245, 190, 120, 20);
+			salvar = new JButton("CADASTRAR");
 		}
 		
 		sabor.setBounds(30, 20, 150, 25);
@@ -74,7 +76,7 @@ public class TelaBebidaPastel implements ActionListener {
 		
 		if (op == 1 || op == 3 ) {
 			
-			salvar.setBounds(120,50,100,100);
+			salvar.setBounds(120,50,140,100);
 			mensagemBotao();
 		}
 		

@@ -18,7 +18,7 @@ public class TelaCardapio implements ActionListener{
 	private JLabel preco = new JLabel("Preço: ");
 	private JTextField textPreco;
 	
-	private JButton salvar =  new JButton("SALVAR");
+	private JButton salvar;
 	private JButton deletar =  new JButton("DELETAR");
 	
 	private static RegistrosDados registro;
@@ -45,17 +45,18 @@ public class TelaCardapio implements ActionListener{
 			textProduto = new JTextField(registro.listarCardapio()[indice].getProdutos());
 			textDescricao = new JTextField(registro.listarCardapio()[indice].getDescricaoProdutos());
 			textPreco = new JTextField(precoProd);
-			
+			salvar = new JButton("SALVAR");
 			
 		}else {
 			textProduto = new JTextField(200);
 			textDescricao = new JTextField(200);
 			textPreco = new JTextField(200);
+			salvar =  new JButton("CADASTRAR");
 		}
 		
 		if (op == 1) {
 			mensagemBotao();
-			salvar.setBounds(120,50,100,100);
+			salvar.setBounds(140,50,140,140);
 		}
 		
 		if (op == 2) {

@@ -32,7 +32,7 @@ public class TelaClienteColaborador implements ActionListener{
 	private JLabel dataEntrada = new JLabel("Funcionário desde: ");
 	private JTextField textData;
 	
-	private JButton salvar =  new JButton("SALVAR");
+	private JButton salvar;
 	private JButton deletar =  new JButton("DELETAR");
 	
 	private static RegistrosDados registro;
@@ -63,6 +63,7 @@ public class TelaClienteColaborador implements ActionListener{
 			textCPF = new JTextField(registro.listarCliente()[indice].getCPF());
 			textTelefone = new JTextField(registro.listarCliente()[indice].getTelefone());
 			textPontuacao = new JTextField(pontos, 200);
+			salvar =  new JButton("SALVAR");
 			
 		}else if(op == 4) {
 			
@@ -70,7 +71,7 @@ public class TelaClienteColaborador implements ActionListener{
 			textCPF = new JTextField(registro.listarColaborador()[indice].getCPF(), 200);
 			textID = new JTextField(registro.listarColaborador()[indice].getID(), 200);
 			textData = new JTextField(registro.listarColaborador()[indice].getDataEntrada(), 200);
-			
+			salvar =  new JButton("SALVAR");
 			
 		}else {
 			
@@ -89,6 +90,7 @@ public class TelaClienteColaborador implements ActionListener{
 			textID = new JTextField("1",200);
 			textData = new JTextField("1",200);
 			}
+			salvar =  new JButton("CADASTRAR");
 			salvar.setBounds(245, 190, 120, 20);
 		}
 		
