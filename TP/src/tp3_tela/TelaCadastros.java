@@ -8,6 +8,7 @@ import javax.swing.event.*;
 
 import tp3_registros.*;
 
+//tela que exibe a lista referente ao menu selecionado
 public class TelaCadastros implements ActionListener, ListSelectionListener{
 	
 	private int menu;
@@ -15,9 +16,6 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 	private JLabel titulo;
 	private JButton botaoCadastrar;
 	private JButton botaoAtualizar;
-	/*private JButton pastel;
-	private JButton cliente;
-	private JButton colaborador;*/
 	
 	private JList<String> pastelCadastrado;
 	private JList<String> bebidaCadastrada;
@@ -242,21 +240,27 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 		
+		//bebida
 		if(e.getValueIsAdjusting() && src == bebidaCadastrada) {
 			new TelaBebidaPastel().editarBebidaPastel(2, registro, this, bebidaCadastrada.getSelectedIndex());
 		}
 		
+		//pastel
 		if(e.getValueIsAdjusting() && src == pastelCadastrado) {
 			new TelaBebidaPastel().editarBebidaPastel(4, registro, this, pastelCadastrado.getSelectedIndex());
 		}
 		
+		//cliente
 		if(e.getValueIsAdjusting() && src == clienteCadastrado) {
 			new TelaClienteColaborador().editarClienteColaborador(2, registro, this, clienteCadastrado.getSelectedIndex());
 		}
 		
+		//colaborador
 		if(e.getValueIsAdjusting() && src == colaboradorCadastrado) {
 			new TelaClienteColaborador().editarClienteColaborador(4, registro, this, colaboradorCadastrado.getSelectedIndex());
 		}
+		
+		//cardapio
 		if(e.getValueIsAdjusting() && src == cardapioCadastrado) {
 			new TelaCardapio().editarCardapio(2, registro, this, cardapioCadastrado.getSelectedIndex());
 		}
@@ -269,23 +273,23 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 		
 		if(src == botaoCadastrar) {
 			
-			if(menu == 1) {
+			if(menu == 1) {//cadastrar bebida
 				
 				new TelaBebidaPastel().editarBebidaPastel(1, registro, this, 0);
 				
-			}else if(menu == 2) {
+			}else if(menu == 2) {//cadastrar pastel
 				
 				new TelaBebidaPastel().editarBebidaPastel(3, registro, this, 0);
 				
-			}else if(menu == 3) {
+			}else if(menu == 3) {//cadastrar cliente
 				
 				new TelaClienteColaborador().editarClienteColaborador(1, registro, this, 0);
 				
-			}else if(menu == 4) {
+			}else if(menu == 4) {//cadastrar colaborador
 				
 				new TelaClienteColaborador().editarClienteColaborador(3, registro, this, 0);
 				
-			}else if(menu == 5) {
+			}else if(menu == 5) {//cadastar produto no cardapio
 				
 				new TelaCardapio().editarCardapio(1, registro, this, 1);
 				
@@ -294,29 +298,29 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 		
 		if(src == botaoAtualizar) {
 			
-			if(menu == 1) {
+			if(menu == 1) {//atualizar JList de bebida
 				
 				bebidaCadastrada.setListData(new ManipulaDados(registro).getListaBebida());
 				bebidaCadastrada.updateUI();
 				
 			}
 			
-			if(menu == 2) {
+			if(menu == 2) {//atualizar Jlist de pastel
 				
 				pastelCadastrado.setListData(new ManipulaDados(registro).getListaPastel());
 				pastelCadastrado.updateUI();
 				
-			}else if(menu == 3) {
+			}else if(menu == 3) {//atualizar Jlist de cliente
 				
 				clienteCadastrado.setListData(new ManipulaDados(registro).getListaCliente());
 				clienteCadastrado.updateUI();
 				
-			}else if(menu == 4) {
+			}else if(menu == 4) {//atualizar JList de colaborador
 				
 				colaboradorCadastrado.setListData(new ManipulaDados(registro).getListaColaborador());
 				colaboradorCadastrado.updateUI();
 				
-			}else if(menu == 5) {
+			}else if(menu == 5) {//atualizar Jlist do cardapio
 				
 				cardapioCadastrado.setListData(new ManipulaDados(registro).getItensCardapio());
 				cardapioCadastrado.updateUI();

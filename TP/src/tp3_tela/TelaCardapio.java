@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import tp3_registros.*;
 
+//classe referente a parte grafica do cardapio
 public class TelaCardapio implements ActionListener{
 	private JFrame janela;
 	
@@ -39,7 +40,7 @@ public class TelaCardapio implements ActionListener{
 		
 		janela = new JFrame(nomeTela);
 		
-		if(op ==2) {
+		if(op ==2) {//se for "editar"
 			String precoProd;
 			precoProd = String.valueOf(registro.listarCardapio()[indice].getPrecoProdutos());
 			
@@ -48,7 +49,7 @@ public class TelaCardapio implements ActionListener{
 			textPreco = new JTextField(precoProd);
 			salvar = new JButton("SALVAR");
 			
-		}else {
+		}else {//se for "cadastrar"
 			textProduto = new JTextField(200);
 			textDescricao = new JTextField(200);
 			textPreco = new JTextField(200);
@@ -56,12 +57,12 @@ public class TelaCardapio implements ActionListener{
 			salvar.setForeground(Color.RED);
 		}
 		
-		if (op == 1) {
+		if (op == 1) {//se for "cadastrar"
 			mensagemBotao();
 			salvar.setBounds(140,50,140,140);
 		}
 		
-		if (op == 2) {
+		if (op == 2) {//se for "editar"
 			produto.setBounds(30, 20, 150, 25);
 			textProduto.setBounds(180, 20, 180, 25);
 		
@@ -72,7 +73,9 @@ public class TelaCardapio implements ActionListener{
 			textPreco.setBounds(180, 60, 180, 25);
 			
 			salvar.setBounds(120, 175, 115, 30);
+			salvar.setForeground(Color.BLUE);
 			deletar.setBounds(245, 175, 115, 30);
+			deletar.setForeground(Color.RED);
 			this.janela.add(produto);
 			this.janela.add(textProduto);
 			this.janela.add(descricao);
@@ -100,7 +103,7 @@ public class TelaCardapio implements ActionListener{
 			@SuppressWarnings("unused")
 			boolean res;
 			
-			if(opcao == 1) { //cadastrar itens no cardápio
+			if(opcao == 1) { //cadastrar itens no cardapio
 				dado[0] = Integer.toString(registro.itensCardapio());
 				
 				dado[1] = textProduto.getText();
@@ -110,7 +113,7 @@ public class TelaCardapio implements ActionListener{
 				res = registro.cadCardapio(dado);
 				
 				mensagemCardapioCadastrado();
-			}else {
+			}else { //editar itens no cardapio
 				dado[0] = Integer.toString(indice);
 				
 				dado[1] = textProduto.getText();
@@ -130,7 +133,7 @@ public class TelaCardapio implements ActionListener{
 		
 		if(src == deletar) {
 			
-			if(opcao == 2) { //excluir cliente
+			if(opcao == 2) { //excluir item do cardapio
 				
 				if(indice == (registro.itensCardapio() - 1)) { //Se for a última bebida da lista
 					
@@ -160,23 +163,29 @@ public class TelaCardapio implements ActionListener{
 		}
 	}
 	
+	//quando edita com sucesso
 	public void mensagemCardapioSucesso() {
 		JOptionPane.showMessageDialog(null, "ITEM EDITADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
+	//quando deleta com sucesso
 	public void mensagemCardapioDeletado() {
 		JOptionPane.showMessageDialog(null, "ITEM DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//quando cadastra com sucesso
 	public void mensagemCardapioCadastrado() {
 		JOptionPane.showMessageDialog(null, "PRODUTO ADICONADO A LISTA\n"
 				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//mensagem quando botao "cadastrar" for ativado
 	public void mensagemBotao() {
 		JOptionPane.showMessageDialog(null, "CLIQUE NO BOTAO PARA ADICIONAR\n"
 				+ "NA LISTA", null, 

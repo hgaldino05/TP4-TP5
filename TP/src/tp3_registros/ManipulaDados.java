@@ -1,6 +1,8 @@
 package tp3_registros;
 import tp3_dados.*;
 @SuppressWarnings("unused")
+
+//Classe que pega os dados presentes em RegistrosDados e exibe no JList de cada objeto
 public class ManipulaDados {
 	
 	private Bebida[] b;
@@ -43,6 +45,8 @@ public class ManipulaDados {
 		
 	}
 	
+	
+	//metodo que lista bebidas
 	public String[] getListaBebida() {
 		String[] listaBebidas = new String[qtdBebidas];
 		for(int i = 0; i < qtdBebidas; i++) {
@@ -55,6 +59,8 @@ public class ManipulaDados {
 		
 		return listaBebidas;
 	}
+	
+	//metodo que lista pasteis
 	public String[] getListaPastel() {
 		String[] listaPasteis = new String[qtdPasteis];
 		for(int i = 0; i < qtdPasteis; i++) {
@@ -68,6 +74,8 @@ public class ManipulaDados {
 		
 		return listaPasteis;
 	}
+	
+	//metodo que lista clientes
 	public String[] getListaCliente() {
 		String[] listaClientes = new String[qtdClientes];
 		for(int i = 0; i < qtdClientes; i++) {
@@ -79,6 +87,8 @@ public class ManipulaDados {
 		
 		return listaClientes;
 	}
+	
+	//metodo que lista os colaboradores
 	public String[] getListaColaborador() {
 		String[] listaColaboradores = new String[qtdColaboradores];
 		for(int i = 0; i < qtdColaboradores; i++) {
@@ -90,6 +100,8 @@ public class ManipulaDados {
 		
 		return listaColaboradores;
 	}
+	
+	//metodo que lista os produtos do Cardapio
 	public String[] getItensCardapio() {
 		String[] produtosCardapio = new String[qtdItensCardapio];
 		for(int i = 0; i < qtdItensCardapio; i++) {
@@ -101,6 +113,8 @@ public class ManipulaDados {
 		
 		return produtosCardapio;
 	}
+	
+	//metodo que lista as vendas
 	public String[] getListaVendas() {
 		String[] listaVendas = new String[qtdVendas];
 		for(int i = 0; i < qtdVendas; i++) {

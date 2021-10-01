@@ -25,6 +25,7 @@ public class Dados{
 	public int totalVendas = 0;
 
 	public void PreCadastrar() {
+		//ArrayList feito para pré-cadastar alguns dados no sistema
 		bebida = new ArrayList<Bebida>();
 		pastel = new ArrayList<Pastel>();
 		cardapio = new ArrayList<Cardapio>();
@@ -60,7 +61,7 @@ public class Dados{
 				
 				if(i == 1) {
 					
-					b.setSabor("Guaraná");
+					b.setSabor("Guarana");
 					b.setEstoque(50);
 					
 					p.setSabor("Carne");
@@ -87,7 +88,7 @@ public class Dados{
 					p.setEstoque(50);
 					
 					cl.setCPF("111.222.333-44");
-					cl.setNome("Anônimo da Silva");
+					cl.setNome("Anonimo da Silva");
 					cl.setTelefone("1234-4321");
 					cl.setPontuacao(80);
 					
@@ -146,7 +147,7 @@ public class Dados{
 					p.setEstoque(50);
 					
 					cl.setCPF("123.321.213-00");
-					cl.setNome("Maurício de Sousa");
+					cl.setNome("Mauricio de Sousa");
 					cl.setTelefone("5040-6070");
 					cl.setPontuacao(115);
 					
@@ -179,10 +180,10 @@ public class Dados{
 				
 				if(i == 7) {
 					
-					b.setSabor("Suco de maracujá");
+					b.setSabor("Suco de maracuja");
 					b.setEstoque(50);
 					
-					p.setSabor("Pizza (Calabresa,Queijo e Orégano)");
+					p.setSabor("Pizza (Calabresa,Queijo e Oregano)");
 					p.setEstoque(50);
 					
 					cl.setCPF("303.404.505-66");
@@ -202,7 +203,7 @@ public class Dados{
 					b.setSabor("Suco de uva");
 					b.setEstoque(50);
 					
-					p.setSabor("Brócolis");
+					p.setSabor("Brocolis");
 					p.setEstoque(30);
 					
 					cl.setCPF("222.333.222-33");
@@ -210,7 +211,7 @@ public class Dados{
 					cl.setTelefone("6655-2020");
 					cl.setPontuacao(1000);
 					
-					co.setNome("Ronaldinho Gaúcho");
+					co.setNome("Ronaldinho Gaucho");
 					co.setID("0009.2021");
 					co.setDataEntrada("2/5/2021");
 					co.setCPF("131.454.000-44");
@@ -247,8 +248,8 @@ public class Dados{
 			Cardapio ca = new Cardapio(null, null, null);
 			
 			if (i == 0) {
-				ca.setProdutos("Pastel médio");
-				ca.setDescricaoProdutos("Pastel médio, com recheio a escolha");
+				ca.setProdutos("Pastel medio");
+				ca.setDescricaoProdutos("Pastel medio, com recheio a escolha");
 				ca.setPrecoProdutos(3.99);
 			}
 			if (i == 1) {
@@ -297,7 +298,7 @@ public class Dados{
 				ca.setPrecoProdutos(6.49);
 			}
 			if (i == 9) {
-				ca.setProdutos("Batata Frita c/ Cheddar e Bacon Grande");
+				ca.setProdutos("Batata Frita c/ Cheddar e Bacon");
 				ca.setDescricaoProdutos("Pote tamanho grande com Batata Frita c/ Cheddar e Bacon");
 				ca.setPrecoProdutos(11.99);
 			}
@@ -365,7 +366,7 @@ public class Dados{
 						v.setProdutoPedido(ca2.getProdutos());
 						v.setQtdProduto(2);
 						v.setValor( (ca2.getPrecoProdutos() *v.getQtdProduto()) );
-						v.setFormaDePagamento("Cartão de Débito");
+						v.setFormaDePagamento("Cartao de Debito");
 						v.setDataVenda("2/9/2021");
 					}
 					if(i == 3) {
@@ -374,7 +375,7 @@ public class Dados{
 						v.setProdutoPedido(ca3.getProdutos());
 						v.setQtdProduto(3);
 						v.setValor( (ca3.getPrecoProdutos() *v.getQtdProduto() ) );
-						v.setFormaDePagamento("Cartão de Crédito");
+						v.setFormaDePagamento("Cartão de Credito");
 						v.setDataVenda("5/5/2021");
 					}
 					if(i == 4) {
@@ -410,6 +411,7 @@ public class Dados{
 		totalVendas = venda.size();
 	}
 
+	//Ao cadastar bebidas, adiciona +1 ao totalBebidas
 	public void bebidaCadastrar(Bebida b, int ind) {
 		this.bebidaControle[ind] = b;
 		if(ind == totalBebidas) {
@@ -433,6 +435,7 @@ public class Dados{
 		this.totalBebidas = totalBebidas;
 	}
 
+	//Ao cadastar pasteis, adiciona +1 ao totalPasteis
 	public void pastelCadastrar(Pastel p, int ind) {
 		this.pastelControle[ind] = p;
 		if(ind == totalPasteis) {
@@ -456,6 +459,7 @@ public class Dados{
 		this.totalPasteis = totalPasteis;
 	}
 
+	//Ao cadastar clientes, adiciona +1 ao totalClientes
 	public void clienteCadastrar(Cliente cl, int ind) {
 		this.clienteControle[ind] = cl;
 		if(ind == totalClientes) {
@@ -479,6 +483,7 @@ public class Dados{
 		this.totalClientes = totalClientes;
 	}
 
+	//Ao cadastar colaboradores, adiciona +1 ao totalColaboradores
 	public void colaboradorCadastrar(Colaborador co, int ind) {
 		this.colaboradorControle[ind] = co;
 		if(ind == totalColaboradores) {
@@ -502,6 +507,7 @@ public class Dados{
 		this.totalColaboradores = totalColaboradores;
 	}
 
+	//Ao cadastar produtos, adiciona +1 ao totalCardápio
 	public void cardapioCadastrar(Cardapio c, int ind) {
 		this.cardapioControle[ind] = c;
 		if(ind == totalCardapio) {

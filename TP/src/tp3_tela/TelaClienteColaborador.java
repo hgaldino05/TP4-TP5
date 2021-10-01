@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tp3_registros.*;
 
+//classe referente a parte grafica de cliente/colaborador
 public class TelaClienteColaborador implements ActionListener{
 	private JFrame janela;
 	
@@ -56,7 +57,7 @@ public class TelaClienteColaborador implements ActionListener{
 		
 		janela = new JFrame(nomeTela);
 		
-		if(op == 2) {
+		if(op == 2) {// se for editar cliente
 			String pontos;
 			pontos = Integer.toString(registro.listarCliente()[indice].getPontuacao());
 			
@@ -66,7 +67,7 @@ public class TelaClienteColaborador implements ActionListener{
 			textPontuacao = new JTextField(pontos, 200);
 			salvar =  new JButton("SALVAR");
 			
-		}else if(op == 4) {
+		}else if(op == 4) {//se for editar colaborador
 			
 			textNome = new JTextField(registro.listarColaborador()[indice].getNome(), 200);
 			textCPF = new JTextField(registro.listarColaborador()[indice].getCPF(), 200);
@@ -137,7 +138,9 @@ public class TelaClienteColaborador implements ActionListener{
 		
 		if (op == 2 || op == 4) {
 			salvar.setBounds(120, 175, 115, 30);
+			salvar.setForeground(Color.BLUE);
 			deletar.setBounds(245, 175, 115, 30);
+			deletar.setForeground(Color.RED);
 			this.janela.add(deletar);
 			
 			this.janela.add(nome);
@@ -184,7 +187,7 @@ public class TelaClienteColaborador implements ActionListener{
 				res = registro.cadCliente(dado);
 				mensagemClienteCadastrado();
 				
-			}else if(opcao == 3) {
+			}else if(opcao == 3) {//cadastrar colaborador
 				dado[0] = Integer.toString(registro.qtdColaboradores());
 				dado[1] = textNome.getText();
 				dado[2] = textCPF.getText();
@@ -231,7 +234,7 @@ public class TelaClienteColaborador implements ActionListener{
 			
 			if(opcao == 2) { //excluir cliente
 				
-				if(indice == (registro.qtdClientes() - 1)) { //Se for a última bebida da lista
+				if(indice == (registro.qtdClientes() - 1)) { //se o cliente estiver no ultimo indice da lista
 					
 					registro.listarCliente()[indice] = null;
 					registro.getDados().setTotalClientes(registro.getDados().getTotalClientes() - 1);
@@ -256,7 +259,7 @@ public class TelaClienteColaborador implements ActionListener{
 				}
 			}else if(opcao == 4) { //excluir colaborador
 				
-				if(indice == (registro.qtdColaboradores() - 1)) { //Se for a última bebida da lista
+				if(indice == (registro.qtdColaboradores() - 1)) { //se o colaborador estiver no ultimo indice da lista
 					
 					registro.listarColaborador()[indice] = null;
 					registro.getDados().setTotalColaboradores(registro.getDados().getTotalColaboradores() - 1);
@@ -284,39 +287,52 @@ public class TelaClienteColaborador implements ActionListener{
 		
 		}
 	}
+	
+	//mensagem quando cliente for editado com sucesso
 	public void mensagemClienteSucesso() {
 		JOptionPane.showMessageDialog(null, "CLIENTE EDITADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//mensagem quando colaborador for editado com sucesso
 	public void mensagemColaboradorSucesso() {
 		JOptionPane.showMessageDialog(null, "COLABORADOR EDITADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
+	//mensagem quando cliente for deletado com sucesso
 	public void mensagemClienteDeletado() {
 		JOptionPane.showMessageDialog(null, "CLIENTE DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//mensagem quando colaborador for deletado com sucesso
 	public void mensagemColaboradorDeletado() {
 		JOptionPane.showMessageDialog(null, "COLABORADOR DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//mensagem quando cliente for cadastrado com sucesso
 	public void mensagemClienteCadastrado() {
 		JOptionPane.showMessageDialog(null, "CLIENTE ADICONADO A LISTA\n"
 				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//mensagem quando colaborador for cadastrado com sucesso
 	public void mensagemColaboradorCadastrado() {
 		JOptionPane.showMessageDialog(null, "COLABORADOR ADICONADO A LISTA\n"
 				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
+	//mensagem quando botao "cadastrar" for ativado
 	public void mensagemBotao() {
 		JOptionPane.showMessageDialog(null, "CLIQUE NO BOTAO PARA ADICIONAR\n"
 				+ "NA LISTA", null, 

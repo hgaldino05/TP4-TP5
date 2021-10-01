@@ -8,9 +8,10 @@ import tp3_registros.RegistrosDados;
 
 
 
-
+//classe que roda a parte grafica do programa
 public class Principal implements ActionListener{
 
+	//atributos referentes a janela inicial do programa
 	private static JFrame janela = new JFrame("SISTEMA");
 	private static JLabel titulo = new JLabel("PASTELARIA");
 	private static JButton botao1 = new JButton("BEBIDAS");
@@ -23,7 +24,7 @@ public class Principal implements ActionListener{
 	public static RegistrosDados registro =  new RegistrosDados();
 	
 	public Principal(){
-		titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+		titulo.setFont(new Font("Ebrima", Font.BOLD, 20));
 		titulo.setBounds(165, 40, 150, 30);
 		
 		botao1.setFont(new Font("Calibri", Font.ITALIC, 16));
@@ -69,26 +70,32 @@ public class Principal implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
+		//abre a JList de bebidas
 		if(src == botao1) {
 			new TelaCadastros().tela(registro, 1);
 		}
 		
+		//abre a JList de pasteis
 		if(src == botao2) {
 			new TelaCadastros().tela(registro, 2);
 		}
 		
+		//abre a JList de clientes
 		if(src == botao3) {
 			new TelaCadastros().tela(registro, 3);
 		}
 		
+		//abre a JList de colaboradores
 		if(src == botao4) {
 			new TelaCadastros().tela(registro, 4);
 		}
 		
+		//abre a JList do cardapio
 		if(src == botao5) {
 			new TelaCadastros().tela(registro, 5);
 		}
 		
+		//abre a JList de vendas
 		if(src == botao6) {
 			new TelaCadastros().tela(registro, 6);
 		}

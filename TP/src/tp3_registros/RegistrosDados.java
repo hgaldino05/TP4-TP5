@@ -11,7 +11,7 @@ import tp3_dados.Venda;
 public class RegistrosDados {
 	private Dados d = new Dados();
 	
-	
+	//metodo que adiciona os dados pre cadastrados no sistema toda vez que for iniciado
 	public RegistrosDados(){
 		d.PreCadastrar();
 
@@ -73,6 +73,7 @@ public class RegistrosDados {
 		return this.d.getTotalVendas();
 	}
 	
+	//cadastra bebidas no sistema
 	public boolean cadBebida(String[] dadosCad) {
 		if(!dadosCad[1].matches("[0-9]+") || !dadosCad[2].matches("[0-9]+")) {
 			Bebida b = new Bebida(dadosCad[1],Integer.parseInt(dadosCad[2]));
@@ -90,6 +91,7 @@ public class RegistrosDados {
 		}
 	}
 	
+	//cadastra pasteis no sistema
 	public boolean cadPastel(String[] dadosCad) {
 		if(!dadosCad[1].matches("[0-9]+") || !dadosCad[2].matches("[0-9]+")) {
 			Pastel p = new Pastel(dadosCad[1],Integer.parseInt(dadosCad[2]));
@@ -107,6 +109,8 @@ public class RegistrosDados {
 			return true;
 		}
 	}
+	
+	//cadastra clientes no sistema
 	public boolean cadCliente(String[] dadosCad) {
 		if(!dadosCad[1].matches("[0-9]+") || !dadosCad[2].matches("[0-9]+")
 				|| !dadosCad[3].matches("[0-9]+") || !dadosCad[4].matches("[0-9]+")) {
@@ -125,6 +129,8 @@ public class RegistrosDados {
 			return false;
 		}
 	}
+	
+	//cadastra colaboradores no sistema
 	public boolean cadColaborador(String[] dadosCad) {
 		if(!dadosCad[1].matches("[0-9]+") || !dadosCad[2].matches("[0-9]+")
 				|| !dadosCad[3].matches("[0-9]+") || !dadosCad[4].matches("[0-9]+")) {
@@ -143,6 +149,8 @@ public class RegistrosDados {
 			return true;
 		}
 	}
+	
+	//cadastra produtos no sistema
 	public boolean cadCardapio(String[] dadosCad) {
 		if(!dadosCad[1].matches("[0-9]+") || !dadosCad[2].matches("[0-9]+")
 				|| !dadosCad[3].matches("[0-9]+")) {
