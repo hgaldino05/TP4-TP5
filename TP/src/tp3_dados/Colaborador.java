@@ -6,7 +6,7 @@ public class Colaborador extends Pessoa{
 	private String ID;
 	private String dataEntrada;
 	
-	public Colaborador() {
+	public Colaborador(String dadosCad, String dadosCad2, String dadosCad3, String dadosCad4) {
 	}
 	public String getNome() {
 		return nome;

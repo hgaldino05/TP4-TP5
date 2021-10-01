@@ -20,8 +20,9 @@ public class ManipulaDados {
 	
 	private Venda[] v;
 	private int qtdVendas;
-	
+	private Dados d;
 	public ManipulaDados(RegistrosDados registro) {
+		
 		b = registro.listarBebida();
 		qtdBebidas = registro.qtdBebidas();
 		
@@ -46,6 +47,10 @@ public class ManipulaDados {
 		String[] listaBebidas = new String[qtdBebidas];
 		for(int i = 0; i < qtdBebidas; i++) {
 			listaBebidas[i] = b[i].getSabor() + "  ESTOQUE: " + b[i].getEstoque();
+			
+			if(b[i].getSabor() == null) {
+				listaBebidas[i] = "NOVA BEBIDA: CLIQUE PARA INSERIR OS DADOS";
+			}
 		}
 		
 		return listaBebidas;
@@ -54,6 +59,11 @@ public class ManipulaDados {
 		String[] listaPasteis = new String[qtdPasteis];
 		for(int i = 0; i < qtdPasteis; i++) {
 			listaPasteis[i] = p[i].getSabor()+ "  ESTOQUE: " + p[i].getEstoque();
+			
+			if(p[i].getSabor() == null) {
+				listaPasteis[i] = "NOVO PASTEL: CLIQUE PARA INSERIR OS DADOS";
+			}
+			
 		}
 		
 		return listaPasteis;
@@ -62,6 +72,9 @@ public class ManipulaDados {
 		String[] listaClientes = new String[qtdClientes];
 		for(int i = 0; i < qtdClientes; i++) {
 			listaClientes[i] = cl[i].getNome() + "   PONTOS: " + cl[i].getPontuacao();
+			if(cl[i].getNome() == null) {
+				listaClientes[i] = "NOVO CLIENTE: CLIQUE PARA INSERIR OS DADOS";
+			}
 		}
 		
 		return listaClientes;
@@ -70,6 +83,9 @@ public class ManipulaDados {
 		String[] listaColaboradores = new String[qtdColaboradores];
 		for(int i = 0; i < qtdColaboradores; i++) {
 			listaColaboradores[i] = co[i].getNome() + "   ID: " + co[i].getID();
+			if(co[i].getNome() == null) {
+				listaColaboradores[i] = "NOVO COLABORADOR: CLIQUE PARA INSERIR OS DADOS";
+			}
 		}
 		
 		return listaColaboradores;
@@ -78,7 +94,9 @@ public class ManipulaDados {
 		String[] produtosCardapio = new String[qtdItensCardapio];
 		for(int i = 0; i < qtdItensCardapio; i++) {
 			produtosCardapio[i] = ca[i].getProdutos();
-
+			if(ca[i].getProdutos() == null) {
+				produtosCardapio[i] = "NOVO PRODUTO: CLIQUE PARA INSERIR OS DADOS";
+			}
 		}
 		
 		return produtosCardapio;

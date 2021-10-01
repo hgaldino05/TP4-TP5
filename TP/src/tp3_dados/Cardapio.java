@@ -8,7 +8,7 @@ public class Cardapio {
 	private double precoProdutos;
 
 
-public Cardapio() {
+public Cardapio(String dadosCad, String dadosCad2, String dadosCad3) {
 	
 	
 }

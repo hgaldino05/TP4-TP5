@@ -7,7 +7,7 @@ public class Cliente extends Pessoa{
 	private String telefone;
 	private int pontuacao;
 	
-	public Cliente() {
+	public Cliente(String dadosCad, String dadosCad2, String dadosCad3, int i) {
 	
 	}
 	public String getNome() {

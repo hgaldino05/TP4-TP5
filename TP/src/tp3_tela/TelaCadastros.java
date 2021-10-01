@@ -102,6 +102,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.setVisible(true);
 				
 				botaoCadastrar.addActionListener(this);
+				botaoAtualizar.addActionListener(this);
 				pastelCadastrado.addListSelectionListener(this);
 				
 				break;
@@ -137,6 +138,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.setVisible(true);
 				
 				botaoCadastrar.addActionListener(this);
+				botaoAtualizar.addActionListener(this);
 				clienteCadastrado.addListSelectionListener(this);
 				break;
 			
@@ -171,6 +173,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.setVisible(true);
 				
 				botaoCadastrar.addActionListener(this);
+				botaoAtualizar.addActionListener(this);
 				colaboradorCadastrado.addListSelectionListener(this);
 				break;
 			case 5: //Cardápio
@@ -204,6 +207,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.setVisible(true);
 				
 				botaoCadastrar.addActionListener(this);
+				botaoAtualizar.addActionListener(this);
 				cardapioCadastrado.addListSelectionListener(this);
 				break;
 			case 6: //Venda
@@ -284,6 +288,38 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 			}else if(menu == 5) {
 				
 				new TelaCardapio().editarCardapio(1, registro, this, 1);
+				
+			}
+		}
+		
+		if(src == botaoAtualizar) {
+			
+			if(menu == 1) {
+				
+				bebidaCadastrada.setListData(new ManipulaDados(registro).getListaBebida());
+				bebidaCadastrada.updateUI();
+				
+			}
+			
+			if(menu == 2) {
+				
+				pastelCadastrado.setListData(new ManipulaDados(registro).getListaPastel());
+				pastelCadastrado.updateUI();
+				
+			}else if(menu == 3) {
+				
+				clienteCadastrado.setListData(new ManipulaDados(registro).getListaCliente());
+				clienteCadastrado.updateUI();
+				
+			}else if(menu == 4) {
+				
+				colaboradorCadastrado.setListData(new ManipulaDados(registro).getListaColaborador());
+				colaboradorCadastrado.updateUI();
+				
+			}else if(menu == 5) {
+				
+				cardapioCadastrado.setListData(new ManipulaDados(registro).getItensCardapio());
+				cardapioCadastrado.updateUI();
 				
 			}
 		}

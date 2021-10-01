@@ -75,17 +75,20 @@ public class TelaClienteColaborador implements ActionListener{
 		}else {
 			
 			//Dados comuns em ambas as classes
-			textNome = new JTextField(200);
-			textCPF = new JTextField(200);
+			textNome = new JTextField("1",200);
+			textCPF = new JTextField("1",200);
 			
 			//Dados presentes só em Cliente
-			textPontuacao = new JTextField(200);
-			textTelefone = new JTextField(200);
+			if(opcao == 1) {
+			textPontuacao = new JTextField("1",200);
+			textTelefone = new JTextField("1",200);
+			}
 			//Dados presentes só em Colaborador
 			
-			textID = new JTextField(200);
-			textData = new JTextField(200);
-			
+			if(opcao == 3) {
+			textID = new JTextField("1",200);
+			textData = new JTextField("1",200);
+			}
 			salvar.setBounds(245, 190, 120, 20);
 		}
 		
@@ -96,7 +99,7 @@ public class TelaClienteColaborador implements ActionListener{
 		textCPF.setBounds(180, 40, 180, 25);
 		
 		//Adiciona o TextField dos dados do Cliente
-		if (op == 1 || op == 2 ) {
+		if (op == 2 ) {
 			
 			pontuacao.setBounds(30, 60, 150, 25);
 			textPontuacao.setBounds(180, 60, 180, 25);
@@ -113,7 +116,7 @@ public class TelaClienteColaborador implements ActionListener{
 		} 
 		
 		//Adiciona o TextField dos dados do Colaborador
-		if (op == 3 || op == 4 ) {
+		if (op == 4 ) {
 			ID.setBounds(30, 60, 150, 25);
 			textID.setBounds(180, 60, 180, 25);
 			
@@ -132,12 +135,22 @@ public class TelaClienteColaborador implements ActionListener{
 			salvar.setBounds(120, 175, 115, 30);
 			deletar.setBounds(245, 175, 115, 30);
 			this.janela.add(deletar);
+			
+			this.janela.add(nome);
+			this.janela.add(textNome);
+			
+			this.janela.add(CPF);
+			this.janela.add(textCPF);
 		}
-		this.janela.add(nome);
-		this.janela.add(textNome);
 		
-		this.janela.add(CPF);
-		this.janela.add(textCPF);
+		if (op == 1 || op == 3 ) {
+			
+			
+			salvar.setBounds(150,80,150,150);
+			mensagemBotao();
+		}
+		
+	
 		this.janela.add(salvar);
 		
 		this.janela.setLayout(null);
@@ -153,10 +166,30 @@ public class TelaClienteColaborador implements ActionListener{
 		Object src = e.getSource();
 		if(src == salvar) {
 			
+			@SuppressWarnings("unused")
+			boolean res;
+			
 			if(opcao == 1) { //cadastrar cliente
 				dado[0] = Integer.toString(registro.qtdClientes());
+				
+				dado[1] = textNome.getText();
+				dado[2] = textCPF.getText();
+				dado[3] = textTelefone.getText();
+				dado[4] = textPontuacao.getText();
+				
+				res = registro.cadCliente(dado);
+				mensagemClienteCadastrado();
+				
 			}else if(opcao == 3) {
 				dado[0] = Integer.toString(registro.qtdColaboradores());
+				dado[1] = textNome.getText();
+				dado[2] = textCPF.getText();
+				dado[3] = textID.getText();
+				dado[4] = textData.getText();
+				
+				res = registro.cadColaborador(dado);
+				mensagemColaboradorCadastrado();
+				
 			}else if(opcao == 2){ //editar cliente
 				dado[0] = Integer.toString(indice);
 				
@@ -267,5 +300,22 @@ public class TelaClienteColaborador implements ActionListener{
 		JOptionPane.showMessageDialog(null, "COLABORADOR DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
+	}
+	public void mensagemClienteCadastrado() {
+		JOptionPane.showMessageDialog(null, "CLIENTE ADICONADO A LISTA\n"
+				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	public void mensagemColaboradorCadastrado() {
+		JOptionPane.showMessageDialog(null, "COLABORADOR ADICONADO A LISTA\n"
+				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	public void mensagemBotao() {
+		JOptionPane.showMessageDialog(null, "CLIQUE NO BOTAO PARA ADICIONAR\n"
+				+ "NA LISTA", null, 
+				JOptionPane.INFORMATION_MESSAGE);
 	}
 }

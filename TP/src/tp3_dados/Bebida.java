@@ -7,7 +7,7 @@ public class Bebida {
 	
 	private int estoque;
 	
-	public Bebida() {
+	public Bebida(String dadosCad, int i) {
 		// TODO Auto-generated constructor stub
 	}
 	

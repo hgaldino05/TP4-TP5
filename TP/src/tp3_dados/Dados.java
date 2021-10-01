@@ -2,8 +2,6 @@ package tp3_dados;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class Dados{
 	private List<Bebida> bebida;
 	private List<Pastel> pastel;
@@ -13,18 +11,18 @@ public class Dados{
 	private List<Venda> venda;
 
 	
-	private Bebida[] bebidaControle = new Bebida[99];
-	private int totalBebidas = 0;
-	private Pastel[] pastelControle = new Pastel[99];
-	private int totalPasteis = 0;
-	private Cliente[] clienteControle = new Cliente[99];
-	private int totalClientes = 0;
-	private Colaborador[] colaboradorControle = new Colaborador[99];
-	private int totalColaboradores = 0;
-	private Cardapio[] cardapioControle = new Cardapio[99];
-	private int totalCardapio = 0;
-	private Venda[] vendaControle = new Venda[99];
-	private int totalVendas = 0;
+	public Bebida[] bebidaControle = new Bebida[99];
+	public int totalBebidas = 0;
+	public Pastel[] pastelControle = new Pastel[99];
+	public int totalPasteis = 0;
+	public Cliente[] clienteControle = new Cliente[99];
+	public int totalClientes = 0;
+	public Colaborador[] colaboradorControle = new Colaborador[99];
+	public int totalColaboradores = 0;
+	public Cardapio[] cardapioControle = new Cardapio[99];
+	public int totalCardapio = 0;
+	public Venda[] vendaControle = new Venda[99];
+	public int totalVendas = 0;
 
 	public void PreCadastrar() {
 		bebida = new ArrayList<Bebida>();
@@ -36,10 +34,10 @@ public class Dados{
 		
 		for(int i = 0; i < 10; i++) {
 			
-			Bebida b = new Bebida();
-			Pastel p = new Pastel();
-			Cliente cl = new Cliente();
-			Colaborador co = new Colaborador();
+			Bebida b = new Bebida(null, i);
+			Pastel p = new Pastel(null, i);
+			Cliente cl = new Cliente(null, null, null, i);
+			Colaborador co = new Colaborador(null, null, null, null);
 			
 				if(i == 0) {
 					
@@ -246,7 +244,7 @@ public class Dados{
 			}
 		
 		for(int i = 0; i < 10; i++) {
-			Cardapio ca = new Cardapio();
+			Cardapio ca = new Cardapio(null, null, null);
 			
 			if (i == 0) {
 				ca.setProdutos("Pastel médio");
@@ -400,11 +398,11 @@ public class Dados{
 			cardapioControle[i]= cardapio.get(i);
 		}
 		
-		totalClientes = cliente.size();
-		totalColaboradores = colaborador.size();
-		totalBebidas = bebida.size();
-		totalPasteis = pastel.size();
-		totalCardapio = cardapio.size();
+		totalClientes = 10;
+		totalColaboradores = 10;
+		totalBebidas = 10;
+		totalPasteis = 10;
+		totalCardapio = 10;
 		for (int j = 0; j < 5; j++) {
 			vendaControle[j] = venda.get(j);
 		}
@@ -412,6 +410,13 @@ public class Dados{
 		totalVendas = venda.size();
 	}
 
+	public void bebidaCadastrar(Bebida b, int ind) {
+		this.bebidaControle[ind] = b;
+		if(ind == totalBebidas) {
+			totalBebidas++;
+		}
+	}
+	
 	public Bebida[] getBebidaControle() {
 		return bebidaControle;
 	}
@@ -428,6 +433,13 @@ public class Dados{
 		this.totalBebidas = totalBebidas;
 	}
 
+	public void pastelCadastrar(Pastel p, int ind) {
+		this.pastelControle[ind] = p;
+		if(ind == totalPasteis) {
+			totalPasteis++;
+		}
+	}
+	
 	public Pastel[] getPastelControle() {
 		return pastelControle;
 	}
@@ -444,6 +456,13 @@ public class Dados{
 		this.totalPasteis = totalPasteis;
 	}
 
+	public void clienteCadastrar(Cliente cl, int ind) {
+		this.clienteControle[ind] = cl;
+		if(ind == totalClientes) {
+			totalClientes++;
+		}
+	}
+	
 	public Cliente[] getClienteControle() {
 		return clienteControle;
 	}
@@ -460,6 +479,13 @@ public class Dados{
 		this.totalClientes = totalClientes;
 	}
 
+	public void colaboradorCadastrar(Colaborador co, int ind) {
+		this.colaboradorControle[ind] = co;
+		if(ind == totalColaboradores) {
+			totalColaboradores++;
+		}
+	}
+	
 	public Colaborador[] getColaboradorControle() {
 		return colaboradorControle;
 	}
@@ -476,6 +502,13 @@ public class Dados{
 		this.totalColaboradores = totalColaboradores;
 	}
 
+	public void cardapioCadastrar(Cardapio c, int ind) {
+		this.cardapioControle[ind] = c;
+		if(ind == totalCardapio) {
+			totalCardapio++;
+		}
+	}
+	
 	public Cardapio[] getCardapioControle() {
 		return cardapioControle;
 	}

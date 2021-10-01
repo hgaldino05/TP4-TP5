@@ -7,7 +7,7 @@ public class Pastel {
 
 	private int estoque;
 	
-	public Pastel() {
+	public Pastel(String dadosCad, int i) {
 		// TODO Auto-generated constructor stub
 	}
 	public String getSabor() {

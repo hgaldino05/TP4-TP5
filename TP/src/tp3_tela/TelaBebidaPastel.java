@@ -1,6 +1,7 @@
 package tp3_tela;
 
 import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
 
 
@@ -10,8 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import tp3_dados.Bebida;
-import tp3_dados.Dados;
+
+
 import tp3_registros.*;
 
 
@@ -28,7 +29,7 @@ public class TelaBebidaPastel implements ActionListener {
 	private JButton salvar =  new JButton("SALVAR");
 	private JButton deletar =  new JButton("DELETAR");
 	
-	private static Dados dados;
+	//private static Dados dados;
 	private static RegistrosDados registro;
 	private int indice;
 	private int opcao;
@@ -60,8 +61,8 @@ public class TelaBebidaPastel implements ActionListener {
 			textSabor = new JTextField(registro.listarPastel()[indice].getSabor(), 200);
 			textEstoque = new JTextField(estoqueP, 200);
 		}else {
-			textSabor = new JTextField(200);
-			textEstoque = new JTextField(200);
+			textSabor = new JTextField("1",200);
+			textEstoque = new JTextField("1",200);
 			
 			salvar.setBounds(245, 190, 120, 20);
 		}
@@ -71,13 +72,15 @@ public class TelaBebidaPastel implements ActionListener {
 		estoque.setBounds(30, 60, 150, 25);
 		textEstoque.setBounds(180, 60, 180, 25);
 		
-		if (op == 1 || op == 2 ) {
-			this.janela.add(textSabor);
-			this.janela.add(textEstoque);
-
+		if (op == 1 || op == 3 ) {
+			
+			salvar.setBounds(120,50,100,100);
+			mensagemBotao();
 		}
 		
-		if (op == 3 || op == 4 ) {
+		if (op == 2 || op == 4 ) {
+			janela.add(sabor);
+			janela.add(estoque);
 			this.janela.add(textSabor);
 			this.janela.add(textEstoque);
 			
@@ -90,8 +93,7 @@ public class TelaBebidaPastel implements ActionListener {
 			
 		}
 	
-		janela.add(sabor);
-		janela.add(estoque);
+		
 		janela.add(salvar);
 		
 		this.janela.setLayout(null);
@@ -105,6 +107,8 @@ public class TelaBebidaPastel implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object src = e.getSource();
 			if(src == salvar) {
+				@SuppressWarnings("unused")
+				boolean res;
 				
 				if(opcao == 1) { //cadastrar bebida{
 					dado[0] = Integer.toString(registro.qtdBebidas());
@@ -112,13 +116,11 @@ public class TelaBebidaPastel implements ActionListener {
 					dado[1] = textSabor.getText();
 					dado[2] = textEstoque.getText();
 					
-					int estoque = Integer.parseInt(dado[2]);
+					res = registro.cadBebida(dado);
 					
-					registro.getDados().setTotalBebidas(registro.getDados().getTotalBebidas() + 1);
+					mensagemBebidaCadastrada();
+					//registro.listarPastel()[registro.qtdBebidas()].setSabor(registro.cadBebida(dado).B);;
 					
-					
-					registro.listarBebida()[indice].setSabor(dado[1]);
-					registro.listarBebida()[indice].setEstoque(estoque);
 					
 				}else if(opcao == 3) { //cadastrar pastel 
 					dado[0] = Integer.toString(registro.qtdPasteis());
@@ -126,14 +128,9 @@ public class TelaBebidaPastel implements ActionListener {
 					dado[1] = textSabor.getText();
 					dado[2] = textEstoque.getText();
 					
-					int estoque = Integer.parseInt(dado[2]);
+					res = registro.cadPastel(dado);
 					
-					registro.getDados().setTotalPasteis(registro.getDados().getTotalPasteis() + 1);
-					
-					
-					
-					registro.listarPastel()[indice].setSabor(dado[1]);
-					registro.listarPastel()[indice].setEstoque(estoque);
+					mensagemPastelCadastrado();
 				}else { //editar bebida/pastel
 					dado[0] = Integer.toString(indice);
 					
@@ -232,9 +229,29 @@ public class TelaBebidaPastel implements ActionListener {
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
+		
+		public void mensagemBebidaCadastrada() {
+			JOptionPane.showMessageDialog(null, "BEBIDA ADICONADA A LISTA\n"
+					+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+		}
+		
+		public void mensagemPastelCadastrado() {
+			JOptionPane.showMessageDialog(null, "PASTEL ADICONADA A LISTA\n"
+					+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			janela.dispose();
+		}
 		public void mensagemPastelDeletado() {
 			JOptionPane.showMessageDialog(null, "PASTEL DELETADO COM SUCESSO", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
+		}
+		
+		public void mensagemBotao() {
+			JOptionPane.showMessageDialog(null, "CLIQUE NO BOTAO PARA ADICIONAR\n"
+					+ "NA LISTA", null, 
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 }
