@@ -1,6 +1,7 @@
 package tp3_tela;
 
 import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 
@@ -92,6 +93,7 @@ public class TelaClienteColaborador implements ActionListener{
 			}
 			salvar =  new JButton("CADASTRAR");
 			salvar.setBounds(245, 190, 120, 20);
+			salvar.setForeground(Color.RED);
 		}
 		
 		nome.setBounds(30, 20, 150, 25);

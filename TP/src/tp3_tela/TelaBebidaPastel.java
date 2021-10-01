@@ -1,7 +1,7 @@
 package tp3_tela;
 
 import java.awt.event.ActionListener;
-
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 
@@ -67,6 +67,7 @@ public class TelaBebidaPastel implements ActionListener {
 			textEstoque = new JTextField("1",200);
 			
 			salvar = new JButton("CADASTRAR");
+			salvar.setForeground(Color.RED);
 		}
 		
 		sabor.setBounds(30, 20, 150, 25);

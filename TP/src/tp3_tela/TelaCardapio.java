@@ -1,6 +1,7 @@
 package tp3_tela;
 
 
+import java.awt.Color;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -52,6 +53,7 @@ public class TelaCardapio implements ActionListener{
 			textDescricao = new JTextField(200);
 			textPreco = new JTextField(200);
 			salvar =  new JButton("CADASTRAR");
+			salvar.setForeground(Color.RED);
 		}
 		
 		if (op == 1) {
