@@ -113,7 +113,7 @@ public class TelaBebidaPastel implements ActionListener {
 			
 			if(src == salvar) {//caso o botao "salvar" seja ativado
 				@SuppressWarnings("unused")
-				boolean res;
+				boolean cadastrar;
 				
 				if(opcao == 1) { //cadastrar bebida
 					dado[0] = Integer.toString(registro.qtdBebidas());
@@ -121,7 +121,7 @@ public class TelaBebidaPastel implements ActionListener {
 					dado[1] = textSabor.getText();
 					dado[2] = textEstoque.getText();
 					
-					res = registro.cadBebida(dado);
+					cadastrar = registro.cadBebida(dado);
 					
 					mensagemBebidaCadastrada();
 					//registro.listarPastel()[registro.qtdBebidas()].setSabor(registro.cadBebida(dado).B);;
@@ -133,7 +133,7 @@ public class TelaBebidaPastel implements ActionListener {
 					dado[1] = textSabor.getText();
 					dado[2] = textEstoque.getText();
 					
-					res = registro.cadPastel(dado);
+					cadastrar = registro.cadPastel(dado);
 					
 					mensagemPastelCadastrado();
 				}else { //editar bebida/pastel
