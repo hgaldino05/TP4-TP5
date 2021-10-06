@@ -23,7 +23,7 @@ public class TelaClienteColaborador implements ActionListener{
 	private JTextField textCPF;
 	
 	//Dados Cliente
-	private JLabel pontuacao = new JLabel("PontuaÁ„o: ");
+	private JLabel pontuacao = new JLabel("Pontua√ß√£o: ");
 	private JTextField textPontuacao;
 	private JLabel telefone = new JLabel("Telefone: ");
 	private JTextField textTelefone;
@@ -31,7 +31,7 @@ public class TelaClienteColaborador implements ActionListener{
 	//Dados Colaborador
 	private JLabel ID =  new JLabel("ID: ");
 	private JTextField textID;
-	private JLabel dataEntrada = new JLabel("Funcion·rio desde: ");
+	private JLabel dataEntrada = new JLabel("Funcion√°rio desde: ");
 	private JTextField textData;
 	
 	private JButton salvar;
@@ -81,12 +81,12 @@ public class TelaClienteColaborador implements ActionListener{
 			textNome = new JTextField("1",200);
 			textCPF = new JTextField("1",200);
 			
-			//Dados presentes sÛ em Cliente
+			//Dados presentes s√≥ em Cliente
 			if(opcao == 1) {
 			textPontuacao = new JTextField("1",200);
 			textTelefone = new JTextField("1",200);
 			}
-			//Dados presentes sÛ em Colaborador
+			//Dados presentes s√≥ em Colaborador
 			
 			if(opcao == 3) {
 			textID = new JTextField("1",200);
@@ -174,7 +174,7 @@ public class TelaClienteColaborador implements ActionListener{
 		if(src == salvar) {
 			
 			@SuppressWarnings("unused")
-			boolean res;
+			boolean cadastrar;
 			
 			if(opcao == 1) { //cadastrar cliente
 				dado[0] = Integer.toString(registro.qtdClientes());
@@ -184,7 +184,7 @@ public class TelaClienteColaborador implements ActionListener{
 				dado[3] = textTelefone.getText();
 				dado[4] = textPontuacao.getText();
 				
-				res = registro.cadCliente(dado);
+				cadastrar = registro.cadCliente(dado);
 				mensagemClienteCadastrado();
 				
 			}else if(opcao == 3) {//cadastrar colaborador
@@ -194,7 +194,7 @@ public class TelaClienteColaborador implements ActionListener{
 				dado[3] = textID.getText();
 				dado[4] = textData.getText();
 				
-				res = registro.cadColaborador(dado);
+				cadastrar = registro.cadColaborador(dado);
 				mensagemColaboradorCadastrado();
 				
 			}else if(opcao == 2){ //editar cliente
