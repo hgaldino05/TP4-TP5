@@ -15,9 +15,9 @@ public class TelaCardapio implements ActionListener{
 	
 	private JLabel produto = new JLabel("Produto: ");
 	private JTextField textProduto;
-	private JLabel descricao = new JLabel("Descrição: ");
+	private JLabel descricao = new JLabel("DescriÃ§Ã£o: ");
 	private JTextField textDescricao;
-	private JLabel preco = new JLabel("Preço: ");
+	private JLabel preco = new JLabel("PreÃ§o: ");
 	private JTextField textPreco;
 	
 	private JButton salvar;
@@ -101,7 +101,7 @@ public class TelaCardapio implements ActionListener{
 		if(src == salvar) {
 			
 			@SuppressWarnings("unused")
-			boolean res;
+			boolean cadastrar;
 			
 			if(opcao == 1) { //cadastrar itens no cardapio
 				dado[0] = Integer.toString(registro.itensCardapio());
@@ -110,7 +110,7 @@ public class TelaCardapio implements ActionListener{
 				dado[2] = textDescricao.getText();
 				dado[3] = textPreco.getText();
 				
-				res = registro.cadCardapio(dado);
+				cadastrar = registro.cadCardapio(dado);
 				
 				mensagemCardapioCadastrado();
 			}else { //editar itens no cardapio
@@ -135,7 +135,7 @@ public class TelaCardapio implements ActionListener{
 			
 			if(opcao == 2) { //excluir item do cardapio
 				
-				if(indice == (registro.itensCardapio() - 1)) { //Se for a última bebida da lista
+				if(indice == (registro.itensCardapio() - 1)) { //Se for a Ãºltima bebida da lista
 					
 					registro.listarCardapio()[indice] = null;
 					registro.getDados().setTotalCardapio(registro.getDados().getTotalCardapio() - 1);
