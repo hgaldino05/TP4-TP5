@@ -1,6 +1,10 @@
 package tp3_dados;
 
-//Classe referente ao cardápio
+/**
+ * Classe referente ao cardápio
+ * @author Henrique Galdino
+ *
+ */
 public class Cardapio {
 	
 	private String produtos;

@@ -2,6 +2,7 @@ package tp3_tela;
 
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 
@@ -12,7 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tp3_registros.*;
 
-//classe referente a parte grafica de cliente/colaborador
+/**Exibe a tela ao clicar em um dos Clientes/Colaboradores da Lista
+ * @author Henrique Galdino
+ * @verso 1.0
+ * 
+ * */
 public class TelaClienteColaborador implements ActionListener{
 	private JFrame janela;
 	
@@ -23,7 +28,7 @@ public class TelaClienteColaborador implements ActionListener{
 	private JTextField textCPF;
 	
 	//Dados Cliente
-	private JLabel pontuacao = new JLabel("PontuaÃ§Ã£o: ");
+	private JLabel pontuacao = new JLabel("Pontuação: ");
 	private JTextField textPontuacao;
 	private JLabel telefone = new JLabel("Telefone: ");
 	private JTextField textTelefone;
@@ -31,11 +36,16 @@ public class TelaClienteColaborador implements ActionListener{
 	//Dados Colaborador
 	private JLabel ID =  new JLabel("ID: ");
 	private JTextField textID;
-	private JLabel dataEntrada = new JLabel("FuncionÃ¡rio desde: ");
+	private JLabel dataEntrada = new JLabel("Funcionário desde: ");
 	private JTextField textData;
 	
 	private JButton salvar;
 	private JButton deletar =  new JButton("DELETAR");
+	
+	//Parte referente a busca de clientes
+	private JButton buscar = new JButton("BUSCAR");
+	private JTextField nomeBusca = new JTextField(200);
+	private JLabel titulo = new JLabel("INSIRA O NOME E CLIQUE NO BOTÃO");
 	
 	private static RegistrosDados registro;
 	private int indice;
@@ -44,6 +54,15 @@ public class TelaClienteColaborador implements ActionListener{
 	private String[] dado = new String[20];
 
 	
+	/**
+		* Checa o indice selecionado no menu e exibe a tela referente ao mesmo * 
+		* @param op um int que informa qual ação o usuário optou por realizar (Cadastro/Edição)
+		* @param r classe RegistrosDados cujos dados serão usados
+		* @param t classe TelaCadastro que identifia qual parte do menu foi acessada
+		* @param ind int que serve como "contador", passando pelos índices das listas
+		* 
+		* @return Tela referente a ação que o usuário escolheu
+	 */
 	public void editarClienteColaborador(int op, RegistrosDados r, TelaCadastros t, int ind) {
 		
 		opcao = op;
@@ -51,9 +70,9 @@ public class TelaClienteColaborador implements ActionListener{
 		indice = ind;
 		
 		if(op == 1) nomeTela = "Cadastrar Cliente";
-		if(op == 2) nomeTela = "Editar Cliente";
+		if(op == 2) nomeTela = "Dados do Cliente";
 		if(op == 3) nomeTela = "Cadastrar Colaborador";
-		if(op == 4) nomeTela = "Editar Colaborador";
+		if(op == 4) nomeTela = "Dados do Colaborador";
 		
 		janela = new JFrame(nomeTela);
 		
@@ -81,12 +100,12 @@ public class TelaClienteColaborador implements ActionListener{
 			textNome = new JTextField("1",200);
 			textCPF = new JTextField("1",200);
 			
-			//Dados presentes sÃ³ em Cliente
+			//Dados presentes só em Cliente
 			if(opcao == 1) {
 			textPontuacao = new JTextField("1",200);
 			textTelefone = new JTextField("1",200);
 			}
-			//Dados presentes sÃ³ em Colaborador
+			//Dados presentes só em Colaborador
 			
 			if(opcao == 3) {
 			textID = new JTextField("1",200);
@@ -169,12 +188,43 @@ public class TelaClienteColaborador implements ActionListener{
 		deletar.addActionListener(this);
 	}
 	
+	/**
+	 * Define a tela de busca para a lista de Clientes
+	 * 
+	 * @return Tela referente a ação que o usuário escolheu
+	 */
+	public void buscaCliente() {
+		janela = new JFrame("Busca cliente");
+		
+		nomeBusca.setBounds(140, 60, 180, 25);
+		buscar.setBounds(180, 100, 110, 30);
+		titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
+		titulo.setBounds(60, 10,350, 30);
+		
+		this.janela.setLayout(null);
+		
+		this.janela.setSize(500, 200);
+		this.janela.setVisible(true);
+		this.janela.add(nomeBusca);
+		this.janela.add(buscar);
+		this.janela.add(titulo);
+		
+		buscar.addActionListener(this);
+		
+	}
+	
+	/**
+	 * Verifica e define o que acontece quando cada um dos botões é ativado
+	 * 
+	 * @param e, que verifica qual dos botões foi acionado
+	 * @return a mensagem referente a ação que se originou através da ativação do botão
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == salvar) {
 			
 			@SuppressWarnings("unused")
-			boolean cadastrar;
+			boolean cadastra;
 			
 			if(opcao == 1) { //cadastrar cliente
 				dado[0] = Integer.toString(registro.qtdClientes());
@@ -184,7 +234,7 @@ public class TelaClienteColaborador implements ActionListener{
 				dado[3] = textTelefone.getText();
 				dado[4] = textPontuacao.getText();
 				
-				cadastrar = registro.cadCliente(dado);
+				cadastra = registro.cadCliente(dado);
 				mensagemClienteCadastrado();
 				
 			}else if(opcao == 3) {//cadastrar colaborador
@@ -194,7 +244,7 @@ public class TelaClienteColaborador implements ActionListener{
 				dado[3] = textID.getText();
 				dado[4] = textData.getText();
 				
-				cadastrar = registro.cadColaborador(dado);
+				cadastra = registro.cadColaborador(dado);
 				mensagemColaboradorCadastrado();
 				
 			}else if(opcao == 2){ //editar cliente
@@ -286,54 +336,96 @@ public class TelaClienteColaborador implements ActionListener{
 			}
 		
 		}
+		
+		if(src == buscar) {
+			RegistrosDados buscarRegistro = new RegistrosDados();
+			for(int i = 0; i< buscarRegistro.qtdClientes(); i++) {
+				
+				if(nomeBusca.getText().equalsIgnoreCase(buscarRegistro.listarCliente()[i].getNome())) {
+					editarClienteColaborador(2, buscarRegistro, null, i);
+					janela.remove(salvar);
+					janela.remove(deletar);
+				}
+				
+			}
+		}
 	}
 	
-	//mensagem quando cliente for editado com sucesso
-	public void mensagemClienteSucesso() {
+	
+	
+	/**
+	 * Mensagem que é exibida quando os dados do cliente são editados
+	 * @return janela com texto "CLIENTE EDITADO COM SUCESSO"
+	 */
+	public void mensagemClienteSucesso() {//mensagem quando cliente for editado com sucesso
 		JOptionPane.showMessageDialog(null, "CLIENTE EDITADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
-	//mensagem quando colaborador for editado com sucesso
-	public void mensagemColaboradorSucesso() {
+	
+	/**
+	 * Mensagem que é exibida quando os dados do colaborador são editados
+	 * @return janela com texto "COLABORADOR EDITADO COM SUCESSO"
+	 */
+	public void mensagemColaboradorSucesso() {//mensagem quando colaborador for editado com sucesso
 		JOptionPane.showMessageDialog(null, "COLABORADOR EDITADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
-	//mensagem quando cliente for deletado com sucesso
-	public void mensagemClienteDeletado() {
+	
+	/**
+	 * Mensagem que é exibida quando os dados do cliente são deletados
+	 * @return janela com texto "CLIENTE DELETADO COM SUCESSO"
+	 */
+	public void mensagemClienteDeletado() {//mensagem quando cliente for deletado com sucesso
 		JOptionPane.showMessageDialog(null, "CLIENTE DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
-	//mensagem quando colaborador for deletado com sucesso
-	public void mensagemColaboradorDeletado() {
+	
+	/**
+	 * Mensagem que é exibida quando os dados do colaborador são deletados
+	 * @return janela com texto "CLIENTE DELETADO COM SUCESSO"
+	 */
+	public void mensagemColaboradorDeletado() {//mensagem quando colaborador for deletado com sucesso
 		JOptionPane.showMessageDialog(null, "COLABORADOR DELETADO COM SUCESSO", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
-	//mensagem quando cliente for cadastrado com sucesso
-	public void mensagemClienteCadastrado() {
+	
+	/**
+	 * Mensagem que é exibida quando um cliente é cadastrado e adicionado a lista
+	 * @return janela com texto "CLIENTE ADICONADO A LISTA FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS"
+	 */
+	public void mensagemClienteCadastrado() {//mensagem quando cliente for cadastrado com sucesso
 		JOptionPane.showMessageDialog(null, "CLIENTE ADICONADO A LISTA\n"
 				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
-	//mensagem quando colaborador for cadastrado com sucesso
-	public void mensagemColaboradorCadastrado() {
+	
+	/**
+	 * Mensagem que é exibida quando um colaborador é cadastrado e adicionado a lista
+	 * @return janela com texto "COLABORADOR ADICONADO A LISTA FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS"
+	 */
+	public void mensagemColaboradorCadastrado() {//mensagem quando colaborador for cadastrado com sucesso
 		JOptionPane.showMessageDialog(null, "COLABORADOR ADICONADO A LISTA\n"
 				+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 	
-	//mensagem quando botao "cadastrar" for ativado
-	public void mensagemBotao() {
+	
+	/**
+	 * Mensagem que é exibida quando o botao cadastrar é ativado na janela que contém a lista
+	 * @return janela com texto "CLIQUE NO BOTAO PARA ADICIONAR"
+	 */
+	public void mensagemBotao() {//mensagem quando botao "cadastrar" for ativado
 		JOptionPane.showMessageDialog(null, "CLIQUE NO BOTAO PARA ADICIONAR\n"
 				+ "NA LISTA", null, 
 				JOptionPane.INFORMATION_MESSAGE);

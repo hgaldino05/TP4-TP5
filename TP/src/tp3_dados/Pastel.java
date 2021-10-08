@@ -1,7 +1,11 @@
 package tp3_dados;
 
 
-//Classe referente aos dados dos Pastéis presentes no cardápio
+/**
+ * Classe referente aos dados dos Pastéis presentes no cardápio
+ * @author Henrique Galdino
+ *
+ */
 public class Pastel {
 	private String sabor;
 

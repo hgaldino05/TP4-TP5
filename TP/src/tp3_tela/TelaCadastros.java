@@ -8,7 +8,11 @@ import javax.swing.event.*;
 
 import tp3_registros.*;
 
-//tela que exibe a lista referente ao menu selecionado
+/**Exibe a tela com a lista ao clicar em uma das opções do menu
+ * @author Henrique Galdino
+ * @verso 1.0
+ * 
+ * */
 public class TelaCadastros implements ActionListener, ListSelectionListener{
 	
 	private int menu;
@@ -16,6 +20,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 	private JLabel titulo;
 	private JButton botaoCadastrar;
 	private JButton botaoAtualizar;
+	private JButton botaoBuscar;
 	
 	private JList<String> pastelCadastrado;
 	private JList<String> bebidaCadastrada;
@@ -28,6 +33,13 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 	private static RegistrosDados registro;
 	
 	
+	/**
+	* Checa o indice selecionado no menu e exibe a tela referente ao mesmo * 
+	* @param r classe RegistrosDados cujos dados serão usados
+	* @param listar int que indica qual opção do menu será acessada
+	* 
+	* @return Tela referente a ação que o usuário escolheu
+ */
 	public void tela(RegistrosDados r,int listar) {
 		registro = r;
 		
@@ -42,6 +54,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				titulo = new JLabel("Sabores de bebidas");
 				botaoCadastrar = new JButton("Cadastrar");
 				botaoAtualizar = new JButton("Atualizar");
+				botaoBuscar = new JButton("Buscar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -114,6 +127,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				titulo = new JLabel("Lista de Clientes");
 				botaoCadastrar = new JButton("Cadastrar");
 				botaoAtualizar = new JButton("Atualizar");
+				botaoBuscar = new JButton("Buscar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -122,8 +136,9 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				clienteCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				clienteCadastrado.setVisibleRowCount(10);
 				
-				botaoCadastrar.setBounds(40, 277, 100, 30);
-				botaoAtualizar.setBounds(180, 277, 100, 30);
+				botaoCadastrar.setBounds(20, 277, 100, 30);
+				botaoAtualizar.setBounds(120, 277, 100, 30);
+				botaoBuscar.setBounds(220, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
@@ -131,12 +146,14 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.add(clienteCadastrado);	
 				janela.add(botaoCadastrar);	
 				janela.add(botaoAtualizar);	
+				janela.add(botaoBuscar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
 				botaoCadastrar.addActionListener(this);
 				botaoAtualizar.addActionListener(this);
+				botaoBuscar.addActionListener(this);
 				clienteCadastrado.addListSelectionListener(this);
 				break;
 			
@@ -183,6 +200,7 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				titulo = new JLabel("Itens do Cardápio");
 				botaoCadastrar = new JButton("Cadastrar");
 				botaoAtualizar = new JButton("Atualizar");
+				botaoBuscar = new JButton("Buscar");
 				
 				titulo.setFont(new Font("Bahnschrift", Font.BOLD, 20));
 				titulo.setBounds(90, 10, 250, 30);
@@ -191,8 +209,9 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				cardapioCadastrado.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				cardapioCadastrado.setVisibleRowCount(10);
 				
-				botaoCadastrar.setBounds(40, 277, 100, 30);
-				botaoAtualizar.setBounds(180, 277, 100, 30);
+				botaoCadastrar.setBounds(20, 277, 100, 30);
+				botaoAtualizar.setBounds(120, 277, 100, 30);
+				botaoBuscar.setBounds(220, 277, 100, 30);
 				
 				janela.setLayout(null);
 				
@@ -200,12 +219,14 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				janela.add(cardapioCadastrado);	
 				janela.add(botaoCadastrar);	
 				janela.add(botaoAtualizar);	
+				janela.add(botaoBuscar);	
 				
 				janela.setSize(400, 350);
 				janela.setVisible(true);
 				
 				botaoCadastrar.addActionListener(this);
 				botaoAtualizar.addActionListener(this);
+				botaoBuscar.addActionListener(this);
 				cardapioCadastrado.addListSelectionListener(this);
 				break;
 			case 6: //Venda
@@ -235,7 +256,12 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 		}
 	}
 
-
+	/**
+	 * Verifica e define o que acontece quando cada um dos indices presente nas listas é ativado
+	 * 
+	 * @param e, que verifica qual lista teve o indice ativado
+	 * @return  a tela referente aos dados do indice ativado 
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
@@ -266,7 +292,12 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 		}
 	}
 
-
+	/**
+	 * Verifica e define o que acontece quando cada um dos botões é ativado
+	 * 
+	 * @param e, que verifica qual dos botões foi acionado
+	 * @return a mensagem referente a ação que se originou através da ativação do botão
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -325,6 +356,19 @@ public class TelaCadastros implements ActionListener, ListSelectionListener{
 				cardapioCadastrado.setListData(new ManipulaDados(registro).getItensCardapio());
 				cardapioCadastrado.updateUI();
 				
+			}
+			
+			
+		}
+		
+		if(src == botaoBuscar) {
+			
+			if(menu == 3) {
+				new TelaClienteColaborador().buscaCliente();
+			}
+			
+			if(menu == 5) {
+				new TelaCardapio().buscaProduto();
 			}
 		}
 	}

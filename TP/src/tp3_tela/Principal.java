@@ -8,7 +8,11 @@ import tp3_registros.RegistrosDados;
 
 
 
-//classe que roda a parte grafica do programa
+/**"Main" do projeto, exibe a tela que vai abrindo as outras
+ * @author Henrique Galdino
+ * @verso 1.0
+ * 
+ * */
 public class Principal implements ActionListener{
 
 	//atributos referentes a janela inicial do programa
@@ -23,6 +27,9 @@ public class Principal implements ActionListener{
 	
 	public static RegistrosDados registro =  new RegistrosDados();
 	
+	/**
+	 * Adiciona os elementos da tela inicial
+	 */
 	public Principal(){
 		titulo.setFont(new Font("Ebrima", Font.BOLD, 20));
 		titulo.setBounds(165, 40, 150, 30);
@@ -56,6 +63,11 @@ public class Principal implements ActionListener{
 		janela.setVisible(true);
 	}
 	
+	/**
+	 * abre a janela inicial e adiciona actionListener aos botões
+	 * @param args
+	 * return tela inicial do projeto
+	 */
 	public static void main(String[] args) {
 		Principal menu = new Principal();
 		
@@ -67,6 +79,12 @@ public class Principal implements ActionListener{
 		botao6.addActionListener(menu);
 	}
 	
+	/**
+	 * Verifica e define o que acontece quando cada um dos botões é ativado
+	 * 
+	 * @param e, que verifica qual dos botões foi acionado
+	 * @return a tela que o botão ativado abre
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		

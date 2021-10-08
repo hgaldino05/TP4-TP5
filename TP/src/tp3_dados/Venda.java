@@ -1,7 +1,11 @@
 package tp3_dados;
 
 
-//Classe referente as vendas que serão cadastradas no sistema
+/**
+ * Classe referente as vendas que serão cadastradas no sistema
+ * @author Henrique Galdino
+ *
+ */
 public class Venda {
 
 	private Double valor;

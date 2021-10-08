@@ -2,7 +2,11 @@ package tp3_registros;
 import tp3_dados.*;
 @SuppressWarnings("unused")
 
-//Classe que pega os dados presentes em RegistrosDados e exibe no JList de cada objeto
+
+/**Classe que pega os dados presentes em RegistrosDados e exibe no JList de cada objeto
+ *
+ * @author Henrique Galdino
+ */
 public class ManipulaDados {
 	
 	private Bebida[] b;
@@ -23,6 +27,12 @@ public class ManipulaDados {
 	private Venda[] v;
 	private int qtdVendas;
 	private Dados d;
+	
+	
+	/**
+	 * Associa a lista de dados cadastrados aos vetores que serão printados nas JLists
+	 * @param registro
+	 */
 	public ManipulaDados(RegistrosDados registro) {
 		
 		b = registro.listarBebida();
@@ -46,8 +56,11 @@ public class ManipulaDados {
 	}
 	
 	
-	//metodo que lista bebidas
-	public String[] getListaBebida() {
+	/**
+	 * lista as bebidas cadastradas no List Bebidas
+	 * @return a bebida de cada indice e a quantidade em estoque no formato de String
+	 */
+	public String[] getListaBebida() {//metodo que lista bebidas
 		String[] listaBebidas = new String[qtdBebidas];
 		for(int i = 0; i < qtdBebidas; i++) {
 			listaBebidas[i] = b[i].getSabor() + "  ESTOQUE: " + b[i].getEstoque();
@@ -60,8 +73,11 @@ public class ManipulaDados {
 		return listaBebidas;
 	}
 	
-	//metodo que lista pasteis
-	public String[] getListaPastel() {
+	/**
+	 * lista os pasteis cadastrados no List Pasteis
+	 * @return o pastel de cada indice e a quantidade em estoque no formato de String
+	 */
+	public String[] getListaPastel() {//metodo que lista pasteis
 		String[] listaPasteis = new String[qtdPasteis];
 		for(int i = 0; i < qtdPasteis; i++) {
 			listaPasteis[i] = p[i].getSabor()+ "  ESTOQUE: " + p[i].getEstoque();
@@ -75,8 +91,11 @@ public class ManipulaDados {
 		return listaPasteis;
 	}
 	
-	//metodo que lista clientes
-	public String[] getListaCliente() {
+	/**
+	 * lista os clientes cadastrados no List Clientes
+	 * @return o cliente de cada indice e a quantidade de pontos no formato de String
+	 */
+	public String[] getListaCliente() {//metodo que lista clientes
 		String[] listaClientes = new String[qtdClientes];
 		for(int i = 0; i < qtdClientes; i++) {
 			listaClientes[i] = cl[i].getNome() + "   PONTOS: " + cl[i].getPontuacao();
@@ -88,8 +107,11 @@ public class ManipulaDados {
 		return listaClientes;
 	}
 	
-	//metodo que lista os colaboradores
-	public String[] getListaColaborador() {
+	/**
+	 * lista os colaboradores cadastrados no List Colaboradores
+	 * @return o colaborador de cada indice e o seu ID
+	 */
+	public String[] getListaColaborador() {//metodo que lista os colaboradores
 		String[] listaColaboradores = new String[qtdColaboradores];
 		for(int i = 0; i < qtdColaboradores; i++) {
 			listaColaboradores[i] = co[i].getNome() + "   ID: " + co[i].getID();
@@ -101,8 +123,11 @@ public class ManipulaDados {
 		return listaColaboradores;
 	}
 	
-	//metodo que lista os produtos do Cardapio
-	public String[] getItensCardapio() {
+	/**
+	 * lista os produtos cadastrados no List Cardapio
+	 * @return o produto de cada indice
+	 */
+	public String[] getItensCardapio() {//metodo que lista os produtos do Cardapio
 		String[] produtosCardapio = new String[qtdItensCardapio];
 		for(int i = 0; i < qtdItensCardapio; i++) {
 			produtosCardapio[i] = ca[i].getProdutos();
@@ -114,8 +139,11 @@ public class ManipulaDados {
 		return produtosCardapio;
 	}
 	
-	//metodo que lista as vendas
-	public String[] getListaVendas() {
+	/**
+	 * lista as vendas cadastradas no List Clientes
+	 * @return a venda de cada indice, o cliente que efetuou a compra e o valor da mesma
+	 */
+	public String[] getListaVendas() {//metodo que lista as vendas
 		String[] listaVendas = new String[qtdVendas];
 		for(int i = 0; i < qtdVendas; i++) {
 			listaVendas[i] = v[i].getDataVenda() + " CLIENTE: " + v[i].getCliente()+ "  VALOR: R$" + v[i].getValor();

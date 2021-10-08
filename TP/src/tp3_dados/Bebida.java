@@ -1,6 +1,10 @@
 package tp3_dados;
 
-//Classe referente aos dados das bebidas presentes no cardápio
+/**
+ * Classe referente aos dados das bebidas presentes no cardápio
+ * @author Henrique Galdino
+ *
+ */
 public class Bebida {
 	
 	private String sabor;

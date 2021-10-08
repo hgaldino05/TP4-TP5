@@ -16,7 +16,11 @@ import javax.swing.JTextField;
 import tp3_registros.*;
 
 
-//classe referente a parte grafica de bebida e pastel
+/**Exibe a tela ao clicar em um dos indices da lista de bebidas/pasteis
+ * @author Henrique Galdino
+ * @verso 1.0
+ * 
+ * */
 public class TelaBebidaPastel implements ActionListener {
 	
 	//atributos que formam a janela
@@ -35,6 +39,16 @@ public class TelaBebidaPastel implements ActionListener {
 	private int opcao;
 	private String nomeTela;
 	private String[] dado = new String[20];
+	
+	/**
+	* Checa o indice selecionado no menu e exibe a tela referente ao mesmo * 
+	* @param op um int que informa qual ação o usuário optou por realizar (Cadastro/Edição)
+	* @param r classe RegistrosDados cujos dados serão usados
+	* @param t classe TelaCadastro que identifia qual parte do menu foi acessada
+	* @param ind int que serve como "contador", passando pelos índices das listas
+	* 
+	* @return Tela referente a ação que o usuário escolheu
+ */
 	public void editarBebidaPastel(int op, RegistrosDados r, TelaCadastros t, int ind) {
 		
 		opcao = op;
@@ -108,12 +122,19 @@ public class TelaBebidaPastel implements ActionListener {
 		salvar.addActionListener(this);
 		deletar.addActionListener(this);
 	}
+	
+	/**
+	 * Verifica e define o que acontece quando cada um dos botões é ativado
+	 * 
+	 * @param e, que verifica qual dos botões foi acionado
+	 * @return a mensagem referente a ação que se originou através da ativação do botão
+	 */
 		public void actionPerformed(ActionEvent e) {
 			Object src = e.getSource();
 			
 			if(src == salvar) {//caso o botao "salvar" seja ativado
 				@SuppressWarnings("unused")
-				boolean cadastrar;
+				boolean cadastra;
 				
 				if(opcao == 1) { //cadastrar bebida
 					dado[0] = Integer.toString(registro.qtdBebidas());
@@ -121,7 +142,7 @@ public class TelaBebidaPastel implements ActionListener {
 					dado[1] = textSabor.getText();
 					dado[2] = textEstoque.getText();
 					
-					cadastrar = registro.cadBebida(dado);
+					cadastra = registro.cadBebida(dado);
 					
 					mensagemBebidaCadastrada();
 					//registro.listarPastel()[registro.qtdBebidas()].setSabor(registro.cadBebida(dado).B);;
@@ -133,7 +154,7 @@ public class TelaBebidaPastel implements ActionListener {
 					dado[1] = textSabor.getText();
 					dado[2] = textEstoque.getText();
 					
-					cadastrar = registro.cadPastel(dado);
+					cadastra = registro.cadPastel(dado);
 					
 					mensagemPastelCadastrado();
 				}else { //editar bebida/pastel
@@ -218,53 +239,74 @@ public class TelaBebidaPastel implements ActionListener {
 			}
 		}
 		
-		//mensagem quando a bebida for editada com sucesso
-		public void mensagemBebidaSucesso() {
+		/**
+		 * Mensagem que é exibida quando os dados da bebida são editados
+		 * @return janela com texto "BEBIDA EDITADA COM SUCESSO"
+		 */
+		public void mensagemBebidaSucesso() {//mensagem quando a bebida for editada com sucesso
 			JOptionPane.showMessageDialog(null, "BEBIDA EDITADA COM SUCESSO", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
 		
 		
-		//mensagem quando o pastel for editado com sucesso
-		public void mensagemPastelSucesso() {
+		/**
+		 * Mensagem que é exibida quando os dados do pastel são editados
+		 * @return janela com texto "PASTEL EDITADO COM SUCESSO"
+		 */
+		public void mensagemPastelSucesso() {//mensagem quando o pastel for editado com sucesso
 			JOptionPane.showMessageDialog(null, "PASTEL EDITADO COM SUCESSO", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
 		
-		//mensagem quando a bebida for deletada com sucesso
-		public void mensagemBebidaDeletada() {
+		/**
+		 * Mensagem que é exibida quando os dados da bebida são deletados
+		 * @return janela com texto "BEBIDA DELETADA COM SUCESSO"
+		 */	
+		public void mensagemBebidaDeletada() {//mensagem quando a bebida for deletada com sucesso
 			JOptionPane.showMessageDialog(null, "BEBIDA DELETADA COM SUCESSO", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
 		
-		//mensagem quando o pastel for deletado com sucesso
-		public void mensagemPastelDeletado() {
+		/**
+		 * Mensagem que é exibida quando os dados do pastel são deletados
+		 * @return janela com texto "PASTEL EDITADO COM SUCESSO"
+		 */
+		public void mensagemPastelDeletado() {//mensagem quando o pastel for deletado com sucesso
 			JOptionPane.showMessageDialog(null, "PASTEL DELETADO COM SUCESSO", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
 		
-		//mensagem quando a bebida for cadastrada com sucesso
-		public void mensagemBebidaCadastrada() {
+		/**
+		 * Mensagem que é exibida quando a bebida é cadastrada e adicionada a lista
+		 * @return janela com texto "BEBIDA ADICIONADA A LISTA FAVOR ATUALIZAR A LISTA E  INSERIR OS DADOS"
+		 */
+		public void mensagemBebidaCadastrada() {//mensagem quando a bebida for cadastrada com sucesso
 			JOptionPane.showMessageDialog(null, "BEBIDA ADICONADA A LISTA\n"
 					+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
 		
-		//mensagem quando o pastel for cadastrado com sucesso
-		public void mensagemPastelCadastrado() {
+		/**
+		 * Mensagem que é exibida quando o pastel é cadastrado e adicionado a lista
+		 * @return janela com texto "PASTEL ADICIONADA A LISTA FAVOR ATUALIZAR A LISTA E  INSERIR OS DADOS"
+		 */
+		public void mensagemPastelCadastrado() {//mensagem quando o pastel for cadastrado com sucesso
 			JOptionPane.showMessageDialog(null, "PASTEL ADICONADA A LISTA\n"
 					+ "FAVOR ATUALIZAR A LISTA E INSERIR OS DADOS", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			janela.dispose();
 		}
 		
-		//mensagem quando o botao "cadastrar" for ativado
-		public void mensagemBotao() {
+		/**
+		 * Mensagem que é exibida quando o botão "cadastrar" é ativado na janela que contém a lista
+		 * @return janela com texto "CLIQUE NO BOTAO PARA ADICIONAR"
+		 */
+		public void mensagemBotao() {//mensagem quando o botao "cadastrar" for ativado
 			JOptionPane.showMessageDialog(null, "CLIQUE NO BOTAO PARA ADICIONAR\n"
 					+ "NA LISTA", null, 
 					JOptionPane.INFORMATION_MESSAGE);

@@ -1,7 +1,7 @@
 package tp3_dados;
 
-/*Classe referente aos dados do Cliente
- * Testando Commit com token
+/**Classe referente aos dados do Cliente
+ * @author Henrique Galdino
  */
 public class Cliente extends Pessoa{
 	private String telefone;

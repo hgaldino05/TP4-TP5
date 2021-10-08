@@ -2,6 +2,11 @@ package tp3_dados;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que define os dados e os atribui aos metodos que serão usados para exibi-los/acessa-los em outras classes
+ * @author Henrique Galdino
+ *
+ */
 public class Dados{
 	private List<Bebida> bebida;
 	private List<Pastel> pastel;
@@ -24,6 +29,9 @@ public class Dados{
 	public Venda[] vendaControle = new Venda[99];
 	public int totalVendas = 0;
 
+	/**
+	 * Metodo que adiciona dados ao sistema, com intuito de facilitar a utilização do mesmo
+	 */
 	public void PreCadastrar() {
 		//ArrayList feito para pré-cadastar alguns dados no sistema
 		bebida = new ArrayList<Bebida>();
@@ -411,7 +419,11 @@ public class Dados{
 		totalVendas = venda.size();
 	}
 
-	//Ao cadastar bebidas, adiciona +1 ao totalBebidas
+	/**
+	 * Ao cadastar bebidas, adiciona +1 ao totalBebidas
+	 * @param b
+	 * @param ind
+	 */
 	public void bebidaCadastrar(Bebida b, int ind) {
 		this.bebidaControle[ind] = b;
 		if(ind == totalBebidas) {
@@ -435,7 +447,11 @@ public class Dados{
 		this.totalBebidas = totalBebidas;
 	}
 
-	//Ao cadastar pasteis, adiciona +1 ao totalPasteis
+	/**
+	 * Ao cadastar pasteis, adiciona +1 ao totalPasteis
+	 * @param p
+	 * @param ind
+	 */
 	public void pastelCadastrar(Pastel p, int ind) {
 		this.pastelControle[ind] = p;
 		if(ind == totalPasteis) {
@@ -459,7 +475,11 @@ public class Dados{
 		this.totalPasteis = totalPasteis;
 	}
 
-	//Ao cadastar clientes, adiciona +1 ao totalClientes
+	/**
+	 * Ao cadastar clientes, adiciona +1 ao totalClientes
+	 * @param cl
+	 * @param ind
+	 */
 	public void clienteCadastrar(Cliente cl, int ind) {
 		this.clienteControle[ind] = cl;
 		if(ind == totalClientes) {
@@ -483,7 +503,11 @@ public class Dados{
 		this.totalClientes = totalClientes;
 	}
 
-	//Ao cadastar colaboradores, adiciona +1 ao totalColaboradores
+	/**
+	 * Ao cadastar colaboradores, adiciona +1 ao totalColaboradores
+	 * @param co
+	 * @param ind
+	 */
 	public void colaboradorCadastrar(Colaborador co, int ind) {
 		this.colaboradorControle[ind] = co;
 		if(ind == totalColaboradores) {
@@ -507,7 +531,11 @@ public class Dados{
 		this.totalColaboradores = totalColaboradores;
 	}
 
-	//Ao cadastar produtos, adiciona +1 ao totalCardápio
+	/**
+	 * Ao cadastar produtos, adiciona +1 ao totalCardápio
+	 * @param c
+	 * @param ind
+	 */
 	public void cardapioCadastrar(Cardapio c, int ind) {
 		this.cardapioControle[ind] = c;
 		if(ind == totalCardapio) {
@@ -523,7 +551,7 @@ public class Dados{
 		this.cardapioControle = cardapioControle;
 	}
 
-	public int getTotalCardapio() {
+	public int getTotalCardapio()  {
 		return totalCardapio;
 	}
 

@@ -1,6 +1,10 @@
 package tp3_dados;
 
-//Classe referente aos dados do colaborador
+/**
+ * Classe referente aos dados do colaborador
+ * @author Henrique Galdino
+ *
+ */
 public class Colaborador extends Pessoa{
 	
 	private String ID;
